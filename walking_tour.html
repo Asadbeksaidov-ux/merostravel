@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khiva Walking Tour - Meros Travel | Ichan-Kala Guide</title>
+    <meta name="description"
+        content="Immerse yourself in history with our guided walking tours of Khiva's old city, Ichan-Kala. Discover the Kalta Minor, Juma Mosque, and the legends of the Silk Road.">
+    <meta name="keywords"
+        content="Khiva walking tour, Ichan-Kala guide, historical Khiva tours, Uzbekistan culture tours, Khiva old city guide, Juma Mosque, Kunya-Ark fortress tours">
+
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("VFOlcr26fn2MPqXYK");
+        })();
+    </script>
+</head>
+
+<body>
+
+    <!-- Logo Navigation -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Meros Travel">
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="day_trips.html" class="nav-link">Day Trips</a></li>
+                <li><a href="aral_sea.html" class="nav-link">Aral Sea</a></li>
+                <li><a href="walking_tour.html" class="nav-link active">Walking Tour</a></li>
+                <li><a href="transfers.html" class="nav-link">Transfers</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+            </ul>
+
+        </div>
+    </nav>
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Hero Section -->
+    <header class="page-hero" style="background-image: url('images/walking_tour.png');">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>Magic of Ichan-Kala</h1>
+            <p class="subtitle">Immerse yourself in the atmosphere of the Silk Road. A curated walking journey through
+                history.</p>
+            <a href="#booking" class="btn-link" style="margin-top: 2rem;">Book This Tour <i
+                    class="fa-solid fa-arrow-down"></i></a>
+        </div>
+
+    </header>
+
+    <div class="container main-wrapper">
+
+        <!-- Essentials Grid -->
+        <div class="essentials-grid">
+            <div class="e-card">
+                <i class="fa-regular fa-clock"></i>
+                <h3 data-i18n="walk_duration_title">Duration</h3>
+                <p data-i18n="walk_duration_value">4-5 Hours (Flexible)</p>
+            </div>
+            <div class="e-card">
+                <i class="fa-solid fa-map-pin"></i>
+                <h3 data-i18n="walk_location_title">Meeting Point</h3>
+                <p data-i18n="walk_location_value">Your Hotel / Location</p>
+            </div>
+            <div class="e-card">
+                <i class="fa-solid fa-language"></i>
+                <h3 data-i18n="walk_guide_title">Guide</h3>
+                <p data-i18n="walk_guide_value">English / Russian</p>
+            </div>
+            <div class="e-card price-highlight" style="cursor: pointer;" data-tour-value="Khiva City Walking Tour"
+                onclick="selectWalkingTour(this)">
+                <i class="fa-solid fa-tag"></i>
+                <h3 data-i18n="walk_price_title">Price</h3>
+                <p class="price-big" data-i18n="walk_price_value">$70</p>
+                <span class="price-note" data-i18n="walk_price_note">per group (Guide Service)</span>
+            </div>
+        </div>
+
+        <!-- Program Timeline -->
+        <div class="walking-program">
+            <h2 class="section-title" data-i18n="walk_program_title">Program Highlights</h2>
+            <div class="timeline-path">
+
+                <div class="path-step">
+                    <div class="step-marker">1</div>
+                    <div class="step-content">
+                        <h3 data-i18n="walk_step1_title">Mukhammad Aminkhan Madrasah & Minaret</h3>
+                        <p data-i18n="walk_step1_desc">The iconic unfinished blue tower (Kalta Minor) and the largest
+                            medieval madrasah in Khiva.</p>
+                    </div>
+                </div>
+
+                <div class="path-step">
+                    <div class="step-marker">2</div>
+                    <div class="step-content">
+                        <h3 data-i18n="walk_step2_title">Kunya Ark Palace</h3>
+                        <p data-i18n="walk_step2_desc">The ancient citadel and residence of the Khans, offering
+                            panoramic views of the city.</p>
+                    </div>
+                </div>
+
+                <div class="path-step">
+                    <div class="step-marker">3</div>
+                    <div class="step-content">
+                        <h3 data-i18n="walk_step3_title">Mukhammad Rahimkhan Madrasah</h3>
+                        <p data-i18n="walk_step3_desc">A historical center of education and poetry, facing the Kunya
+                            Ark.</p>
+                    </div>
+                </div>
+
+                <div class="path-step">
+                    <div class="step-marker">4</div>
+                    <div class="step-content">
+                        <h3 data-i18n="walk_step4_title">Ak-Mechet Mosque</h3>
+                        <p data-i18n="walk_step4_desc">A unique small "White Mosque" with a distinctive conical dome and
+                            deep spiritual history.</p>
+                    </div>
+                </div>
+
+                <div class="path-step">
+                    <div class="step-marker">5</div>
+                    <div class="step-content">
+                        <h3 data-i18n="walk_step5_title">Khiva Silk Carpet Workshop</h3>
+                        <p data-i18n="walk_step5_desc">Witness the traditional silk weaving process and see masterpieces
+                            being created by hand.</p>
+                    </div>
+                </div>
+
+                <div class="path-step">
+                    <div class="step-marker">6</div>
+                    <div class="step-content">
+                        <h3 data-i18n="walk_step6_title">Pakhlavan Makhmud Mausoleum</h3>
+                        <p data-i18n="walk_step6_desc">The sacred heart of Ichan-Kala with stunning mesmerizing
+                            turquoise tiles.</p>
+                    </div>
+                </div>
+
+                <div class="path-step">
+                    <div class="step-marker">7</div>
+                    <div class="step-content">
+                        <h3 data-i18n="walk_step7_title">Islam-Khodja Madrasah & Minaret</h3>
+                        <p data-i18n="walk_step7_desc">The tallest minaret in Khiva giving a spectacular skyline view.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="path-step">
+                    <div class="step-marker">8</div>
+                    <div class="step-content">
+                        <h3 data-i18n="walk_step8_title">Juma Mosque</h3>
+                        <p data-i18n="walk_step8_desc">The unique Friday Mosque with 213 ancient carved wooden columns.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="path-step">
+                    <div class="step-marker">9</div>
+                    <div class="step-content">
+                        <h3 data-i18n="walk_step9_title">Mukhammad Amin Inaq Madrasah</h3>
+                        <p data-i18n="walk_step9_desc">One of the earliest buildings in the eastern part of the inner
+                            city.</p>
+                    </div>
+                </div>
+
+                <div class="path-step">
+                    <div class="step-marker">10</div>
+                    <div class="step-content">
+                        <h3 data-i18n="walk_step10_title">Tash-Khovli Palace</h3>
+                        <p data-i18n="walk_step10_desc">The "Stone Palace" known for its intricate Harem, lavish
+                            courtyards, and blue tiles.</p>
+                    </div>
+                </div>
+
+                <div class="path-step">
+                    <div class="step-marker">11</div>
+                    <div class="step-content">
+                        <h3 data-i18n="walk_step11_title">Caravan Sarai</h3>
+                        <p data-i18n="walk_step11_desc">Explore the trading heritage of the Great Silk Road (Allakuli
+                            Khan complex).</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Additional Info -->
+        <div class="info-footer">
+            <div class="info-item included">
+                <i class="fa-solid fa-check-circle"></i>
+                <p data-i18n="walk_included"><strong>Included:</strong> Professional Licensed Guide</p>
+            </div>
+            <div class="info-item excluded">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <p data-i18n="walk_excluded"><strong>Excluded:</strong> Entrance tickets, Lunch</p>
+            </div>
+            <div class="info-item alert">
+                <i class="fa-solid fa-calendar-check"></i>
+                <p data-i18n="walk_booking"><strong>Booking:</strong> Please book guide service in advance.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Booking Section -->
+    <section class="booking-section" id="booking">
+        <div class="booking-container">
+            <h2 data-i18n="walk_booking_title">Book This Tour</h2>
+            <form class="booking-form" id="bookingForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label data-i18n="walk_form_name_label">Your Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="walk_form_contact_label">Contact (Phone/Telegram)</label>
+                        <input type="text" id="contact" name="contact" class="form-control"
+                            placeholder="+998 90 123 45 67" required
+                            oninput="this.value = this.value.replace(/[^0-9+\-]/g, '')">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label data-i18n="walk_form_tour_label">Select Tour</label>
+                        <select id="tour" name="tour" class="form-control" required>
+                            <optgroup label="Walking Tours" data-i18n="walk_form_tour_optgroup1">
+                                <option value="Khiva City Walking Tour" selected data-i18n="walk_form_tour_option1">
+                                    Khiva City Walking Tour (Ichan Kala)
+                                </option>
+                            </optgroup>
+                            <optgroup label="Day Trips (Return to Khiva)" data-i18n="walk_form_tour_optgroup2">
+                                <option value="Three Fortresses Tour" data-i18n="walk_form_tour_option2">Three
+                                    Fortresses Tour (Kyzyl, Toprak, Ayaz Kala)
+                                </option>
+                                <option value="Five Fortresses Tour" data-i18n="walk_form_tour_option3">Five Fortresses
+                                    Tour</option>
+                                <option value="Seven Fortresses Tour" data-i18n="walk_form_tour_option4">Seven
+                                    Fortresses Tour</option>
+                                <option value="Nine Fortresses Tour" data-i18n="walk_form_tour_option5">Nine Fortresses
+                                    Tour</option>
+                                <option value="Badai Tugai + Fortresses" data-i18n="walk_form_tour_option6">Badai Tugai
+                                    + Three Fortresses</option>
+                                <option value="Nukus Museum Tour" data-i18n="walk_form_tour_option7">Nukus Museum &
+                                    Chilpik Kala Tour</option>
+                                <option value="Nukus Museum + Mizdakhan" data-i18n="walk_form_tour_option8">Nukus Museum
+                                    & Mizdakhan Necropolis</option>
+                                <option value="Muynak Ship Cemetery Day Tour" data-i18n="walk_form_tour_option9">Muynak
+                                    Ship Cemetery (1 Day)</option>
+                                <option value="Nukus Museum via Fortresses" data-i18n="walk_form_tour_option10">Nukus
+                                    Museum via Ancient Fortresses</option>
+                            </optgroup>
+                            <optgroup label="Connecting Sightseeing Tours" data-i18n="walk_form_tour_optgroup3">
+                                <option value="Khiva to Nukus via Chilpik" data-i18n="walk_form_tour_option11">Khiva to
+                                    Nukus (Direct with Chilpik)</option>
+                                <option value="Khiva to Nukus via 3 Fortresses" data-i18n="walk_form_tour_option12">
+                                    Khiva to Nukus via 3 Fortresses</option>
+                                <option value="Khiva to Nukus via 4 Fortresses" data-i18n="walk_form_tour_option13">
+                                    Khiva to Nukus via 4 Fortresses</option>
+                                <option value="Khiva to Nukus via Badai Tugai" data-i18n="walk_form_tour_option14">Khiva
+                                    to Nukus via Badai Tugai</option>
+                                <option value="Khiva to Nukus via Jampik" data-i18n="walk_form_tour_option15">Khiva to
+                                    Nukus via Jampik & Badai Tugai
+                                </option>
+                                <option value="Khiva to Bukhara via 3 Fortresses" data-i18n="walk_form_tour_option16">
+                                    Khiva to Bukhara via 3 Fortresses
+                                </option>
+                                <option value="Khiva to Bukhara via 4 Fortresses" data-i18n="walk_form_tour_option17">
+                                    Khiva to Bukhara via 4 Fortresses
+                                </option>
+                            </optgroup>
+                            <optgroup label="Aral Sea Expeditions (2 Days)" data-i18n="walk_form_tour_optgroup4">
+                                <option value="Aral Sea Classic" data-i18n="walk_form_tour_option18">Aral Sea Adventure:
+                                    Classic</option>
+                                <option value="Aral Sea Extended" data-i18n="walk_form_tour_option19">Aral Sea
+                                    Adventure: Extended</option>
+                                <option value="Aral Sea via Kungrad" data-i18n="walk_form_tour_option20">Aral Sea
+                                    Adventure: via Kungrad</option>
+                                <option value="Aral Sea from Nukus" data-i18n="walk_form_tour_option21">Aral Sea
+                                    Adventure: Starting from Nukus</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="walk_form_date_label">Date</label>
+                        <input type="text" id="date" name="date" class="form-control" placeholder="Select Date"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label data-i18n="walk_form_vehicle_label">Vehicle Preference</label>
+                        <select id="vehicle" name="vehicle" class="form-control" required>
+                            <option value="No Vehicle Needed" data-i18n="walk_form_vehicle_option1">No Vehicle Needed
+                                (Guide Only)</option>
+                            <option value="Sedan" data-i18n="walk_form_vehicle_option2">Sedan (1-3 pax)</option>
+                            <option value="SUV" data-i18n="walk_form_vehicle_option3">SUV (1-4 pax)</option>
+                            <option value="Minivan" data-i18n="walk_form_vehicle_option4">Minivan (4-6 pax)</option>
+                            <option value="Minibus" data-i18n="walk_form_vehicle_option5">Minibus (10+ pax)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="walk_form_people_label">Number of People</label>
+                        <input type="number" id="people" name="people" class="form-control" min="1" placeholder="2"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label data-i18n="walk_form_message_label">Additional Requests</label>
+                    <textarea id="message" name="message" class="form-control" rows="3"
+                        placeholder="Hotel pickup location, etc."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit" data-i18n="walk_form_submit_btn">Request Booking</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-socials">
+            <a href="https://www.facebook.com/meroskhiva" class="social-icon" target="_blank"><i
+                    class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://t.me/ZiyovaddinMatkarimov" class="social-icon" target="_blank"><i
+                    class="fa-brands fa-telegram"></i></a>
+            <a href="https://wa.me/998887903293" class="social-icon" target="_blank"><i
+                    class="fa-brands fa-whatsapp"></i></a>
+        </div>
+
+        <div class="footer-contact">
+            <div class="contact-item">
+                <a href="tel:+998943153700" style="text-decoration: none; color: inherit;">
+                    <i class="fa-solid fa-phone"></i> +998 94 315 37 00
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="tel:+998887903293" style="text-decoration: none; color: inherit;">
+                    <i class="fa-solid fa-phone"></i> +998 88 790 32 93
+                </a>
+            </div>
+        </div>
+
+        <hr class="footer-divider">
+
+        <p class="copyright">&copy; 2026 Meros Travel. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="scrollTopBtn">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Walking Tour Selection Function
+        function selectWalkingTour(priceCard) {
+            const tourValue = priceCard.dataset.tourValue;
+
+            // Remove previous selections and hints
+            document.querySelectorAll('.e-card').forEach(card => {
+                card.classList.remove('selected', 'hint-available');
+            });
+
+            // Highlight selected card
+            priceCard.classList.add('selected');
+
+            // Add hint animation to other clickable cards after a short delay
+            setTimeout(() => {
+                document.querySelectorAll('.e-card[onclick]').forEach(card => {
+                    if (card !== priceCard) {
+                        card.classList.add('hint-available');
+                        // Remove hint class after animation completes
+                        setTimeout(() => {
+                            card.classList.remove('hint-available');
+                        }, 600);
+                    }
+                });
+            }, 500);
+
+            // Update form
+            const tourSelect = document.getElementById('tour');
+            if (tourValue && tourSelect) {
+                tourSelect.value = tourValue;
+            }
+
+            // Show toast notification
+            showToast(tourValue);
+
+            // Scroll to booking after delay
+            setTimeout(() => {
+                document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+            }, 800);
+        }
+
+        // Toast notification function
+        function showToast(tour) {
+            // Remove existing toast if any
+            const existingToast = document.querySelector('.toast-notification');
+            if (existingToast) {
+                existingToast.remove();
+            }
+
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = 'toast-notification';
+            toast.innerHTML = `
+                <i class="fa-solid fa-circle-check"></i>
+                <div class="toast-content">
+                    <div class="toast-title">Selected!</div>
+                    <div class="toast-message">${tour}</div>
+                </div>
+            `;
+
+            document.body.appendChild(toast);
+
+            // Show toast with animation
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 100);
+
+            // Hide toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 500);
+            }, 3000);
+        }
+    </script>
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        // Initialize Flatpickr
+        flatpickr("#date", {
+            minDate: "today",
+            dateFormat: "Y-m-d",
+            animate: true,
+            disableMobile: true
+        });
+
+        // Form Submission Logic
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+
+            const name = document.getElementById('name').value;
+            const contact = document.getElementById('contact').value;
+            const tour = document.getElementById('tour').value;
+            const date = document.getElementById('date').value;
+            const vehicle = document.getElementById('vehicle').value;
+            const people = document.getElementById('people').value;
+            const message = document.getElementById('message').value;
+
+            const templateParams = {
+                name: name,
+                contact: contact,
+                tour: tour,
+                date: date,
+                vehicle: vehicle,
+                people: people,
+                message: message || "No additional info"
+            };
+
+            emailjs.send('service_n4nb5ob', 'template_vep6qxe', templateParams)
+                .then(function () {
+                    alert('Success! Your booking inquiry has been sent. We will contact you shortly.');
+                    document.getElementById('bookingForm').reset();
+                }, function (error) {
+                    alert('An error occurred. Please try again or contact us via Telegram.');
+                    console.log('EmailJS Error:', error);
+                })
+                .finally(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                });
+        });
+
+        // Smooth Scroll to Top
+        document.getElementById('scrollTopBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Show/Hide Scroll Button
+        window.onscroll = function () {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                document.getElementById('scrollTopBtn').style.opacity = '1';
+                document.getElementById('scrollTopBtn').style.visibility = 'visible';
+            } else {
+                document.getElementById('scrollTopBtn').style.opacity = '0';
+                document.getElementById('scrollTopBtn').style.visibility = 'hidden';
+            }
+        };
+        // Mobile Menu Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            navToggle.querySelector('i').classList.toggle('fa-bars-staggered');
+            navToggle.querySelector('i').classList.toggle('fa-xmark');
+        });
+
+        navOverlay.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            navOverlay.classList.remove('active');
+            navToggle.querySelector('i').classList.add('fa-bars-staggered');
+            navToggle.querySelector('i').classList.remove('fa-xmark');
+        });
+
+        // Nav Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        .lang-switcher {
+            position: relative;
+            display: inline-block;
+            margin-left: 1rem;
+        }
+
+        .lang-switcher button#langBtn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.05rem;
+            color: var(--primary-gold);
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+            font-family: inherit;
+            font-weight: 600;
+            transition: color 0.2s;
+            filter: drop-shadow(0 0 6px #fff7c1) drop-shadow(0 0 2px #d4af37);
+            text-shadow: 0 0 6px #fff7c1, 0 0 2px #d4af37;
+        }
+
+        .lang-switcher button#langBtn:hover {
+            color: var(--primary-gold-hover);
+        }
+
+        .lang-switcher #langLabel {
+            margin-left: 0.3em;
+            font-size: 1em;
+            color: var(--primary-gold);
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-shadow: 0 0 6px #fff7c1, 0 0 2px #d4af37;
+        }
+
+        .lang-switcher #langDropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 2.2em;
+            background: #fff;
+            border: 1px solid var(--primary-gold);
+            border-radius: 6px;
+            min-width: 120px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            padding: 0.2em 0;
+        }
+
+        .lang-switcher .lang-option {
+            color: #222;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-switcher .lang-option:hover {
+            background: var(--primary-gold);
+            color: #fff;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - Meros Travel | Uzbekistan's Ancient Beauty</title>
+    <meta name="description"
+        content="Browse through the stunning photos of ancient Khiva, the Aral Sea, and the historical Silk Road sights of Uzbekistan captured by Meros Travel.">
+    <meta name="keywords"
+        content="Uzbekistan photography, Khiva photos, Aral Sea pictures, Silk Road gallery, ancient architecture Uzbekistan, Central Asia travel photos">
+
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Gallery Specific Styles */
+        :root {
+            --premium-gold: #d4af37;
+            --dark-overlay: rgba(0, 0, 0, 0.7);
+        }
+
+        .gallery-hero {
+            height: 60vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out, transform 2s ease-out;
+            transform: scale(1.05);
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .gallery-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--premium-gold);
+            font-weight: 300;
+        }
+
+        .gallery-container {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-auto-rows: 250px;
+            gap: 20px;
+            grid-auto-flow: dense;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Large items */
+        .gallery-item.wide {
+            grid-column: span 2;
+        }
+
+        .gallery-item.tall {
+            grid-row: span 2;
+        }
+
+        .gallery-item.big {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .item-overlay {
+            opacity: 1;
+        }
+
+        .item-overlay i {
+            color: white;
+            font-size: 2rem;
+            transform: scale(0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .item-overlay i {
+            transform: scale(1);
+        }
+
+        /* Gallery Section Header */
+        .gallery-section-header {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 2rem 0 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--premium-gold);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .gallery-section-header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 80vh;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border: 3px solid var(--premium-gold);
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 10001;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 40px;
+            transform: translateY(-50%);
+        }
+
+        .nav-btn {
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: rgba(212, 175, 55, 0.2);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: var(--premium-gold);
+            color: black;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 300px;
+            }
+
+            .gallery-item.wide,
+            .gallery-item.big {
+                grid-column: span 1;
+            }
+
+            .gallery-item.tall {
+                grid-row: span 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Meros Travel">
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="day_trips.html" class="nav-link">Day Trips</a></li>
+                <li><a href="aral_sea.html" class="nav-link">Aral Sea</a></li>
+                <li><a href="walking_tour.html" class="nav-link">Walking Tour</a></li>
+                <li><a href="transfers.html" class="nav-link">Transfers</a></li>
+                <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+            </ul>
+
+
+        </div>
+    </nav>
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <header class="gallery-hero">
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('tour(6).jpg');"></div>
+            <div class="slide" style="background-image: url('tour(11).jpg');"></div>
+            <div class="slide" style="background-image: url('tour(3).jpg');"></div>
+            <div class="slide" style="background-image: url('tour(2).jpg');"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Our Gallery</h1>
+            <p>Capturing the Soul of Ancient Silk Road</p>
+        </div>
+    </header>
+
+    <main class="gallery-container">
+        <div class="gallery-grid">
+            <!-- Historical Sights & Highlights -->
+            <div class="gallery-item big">
+                <img src="tour(6).jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="tour(3).jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item tall">
+                <img src="tour(8).jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="tour(4).jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item wide">
+                <img src="tour(11).jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="tour(12).jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item tall">
+                <img src="tour(13).jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="tour(14).jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="tour(15).jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item wide">
+                <img src="tour(18).jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="tour(19).jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="tour(5).jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item big">
+                <img src="tour(1).jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="tour(17).jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+
+            <!-- Our Fleet Section Header -->
+            <div class="gallery-section-header">
+                <h2>Our Transports</h2>
+                <p>Comfort & Style for Your Journey</p>
+            </div>
+
+            <!-- Our Fleet (Comfort & Style) -->
+            <div class="gallery-item">
+                <img src="photo_1_2026-02-11_17-32-18.jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="photo_2_2026-02-11_17-32-18.jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="photo_3_2026-02-11_17-32-18.jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="photo_4_2026-02-11_17-32-18.jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="photo_5_2026-02-11_17-32-18.jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="photo_6_2026-02-11_17-32-18.jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="photo_7_2026-02-11_17-32-18.jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="photo_8_2026-02-11_17-32-18.jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="photo_9_2026-02-11_17-32-18.jpg" alt="Gallery Photo">
+                <div class="item-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="close-lightbox" id="closeLightbox">&times;</span>
+        <div class="lightbox-nav">
+            <div class="nav-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="nav-btn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+        <div class="lightbox-content">
+            <img src="" alt="Enlarged Photo" id="lightboxImg">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-socials">
+            <a href="https://www.facebook.com/meroskhiva" class="social-icon" target="_blank"><i
+                    class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://t.me/ZiyovaddinMatkarimov" class="social-icon" target="_blank"><i
+                    class="fa-brands fa-telegram"></i></a>
+            <a href="https://wa.me/998887903293" class="social-icon" target="_blank"><i
+                    class="fa-brands fa-whatsapp"></i></a>
+        </div>
+        <p class="copyright">&copy; 2026 Meros Travel. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Hero Slider
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, 3000);
+
+        // Lightbox Logic
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeLightbox = document.getElementById('closeLightbox');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let currentIndex = 0;
+        const images = Array.from(galleryItems).map(item => item.querySelector('img').src);
+
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentIndex = index;
+                showImage(currentIndex);
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function showImage(index) {
+            lightboxImg.src = images[index];
+        }
+
+        closeLightbox.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
+
+        lightbox.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        lightboxImg.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox.click();
+            if (e.key === 'ArrowLeft') prevBtn.click();
+            if (e.key === 'ArrowRight') nextBtn.click();
+        });
+
+        // Mobile Menu Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            navToggle.querySelector('i').classList.toggle('fa-bars-staggered');
+            navToggle.querySelector('i').classList.toggle('fa-xmark');
+        });
+
+        navOverlay.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            navOverlay.classList.remove('active');
+            navToggle.querySelector('i').classList.add('fa-bars-staggered');
+            navToggle.querySelector('i').classList.remove('fa-xmark');
+        });
+
+        // Nav Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>

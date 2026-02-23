@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://merostravel.uz/</loc>
+    <lastmod>2026-02-11</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://merostravel.uz/day_trips.html</loc>
+    <lastmod>2026-02-11</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://merostravel.uz/aral_sea.html</loc>
+    <lastmod>2026-02-11</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://merostravel.uz/walking_tour.html</loc>
+    <lastmod>2026-02-11</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://merostravel.uz/transfers.html</loc>
+    <lastmod>2026-02-11</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://merostravel.uz/gallery.html</loc>
+    <lastmod>2026-02-11</lastmod>
+    <priority>0.70</priority>
+  </url>
+</urlset>

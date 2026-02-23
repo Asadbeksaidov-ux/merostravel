@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meros Travel - Premium Uzbekistan Tours & Khiva Experiences</title>
+    <meta name="description"
+        content="Meros Travel offers premium, tailor-made tours across Uzbekistan. Discover the ancient city of Khiva, Aral Sea expeditions, desert fortresses, and exclusive cultural experiences.">
+    <meta name="keywords"
+        content="Meros Travel, Uzbekistan travel, Khiva tours, Aral Sea tour, Samarkand, Bukhara, Silk Road tours, private transfers Uzbekistan, Khorezm fortresses">
+    <meta name="author" content="Meros Travel">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://merostravel.uz/">
+    <meta property="og:title" content="Meros Travel - Premium Uzbekistan Tours">
+    <meta property="og:description"
+        content="Experience the legend of the Silk Road with Meros Travel. Exclusive tours to Khiva, Aral Sea, and beyond.">
+    <meta property="og:image" content="https://merostravel.uz/khiva_tour_thumb.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://merostravel.uz/">
+    <meta property="twitter:title" content="Meros Travel - Premium Uzbekistan Tours">
+    <meta property="twitter:description"
+        content="Experience the legend of the Silk Road with Meros Travel. Exclusive tours to Khiva, Aral Sea, and beyond.">
+    <meta property="twitter:image" content="https://merostravel.uz/khiva_tour_thumb.jpg">
+
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("VFOlcr26fn2MPqXYK");
+        })();
+    </script>
+</head>
+
+<body>
+
+    <!-- Logo Navigation -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Meros Travel">
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="day_trips.html" class="nav-link">Day Trips</a></li>
+                <li><a href="aral_sea.html" class="nav-link">Aral Sea</a></li>
+                <li><a href="walking_tour.html" class="nav-link">Walking Tour</a></li>
+                <li><a href="transfers.html" class="nav-link">Transfers</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+            </ul>
+
+        </div>
+    </nav>
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <header class="home-hero">
+        <div class="container header-content">
+            <h1>Experience the Legend</h1>
+            <p class="subtitle">Discover the ancient beauty of Khiva and beyond with our exclusive premium services.</p>
+            <a href="#booking" class="btn-link" style="margin-top: 2rem;">Book Your Tour <i
+                    class="fa-solid fa-arrow-down"></i></a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Section 1: Day Trips -->
+        <section class="tour-section">
+            <div class="image-box">
+                <img src="images/day_trips.png" alt="Ancient Fortress in Desert">
+                <div class="img-overlay"></div>
+            </div>
+            <div class="content-box">
+                <div class="content-inner">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <h2>Day Trips</h2>
+                    <p class="description">Special one-day trips to ancient fortresses and pilgrimage sites around
+                        Khiva. Immerse yourself in the golden sands and history of the Khorezm region.</p>
+                    <div class="btn-group">
+                        <a href="day_trips.html" class="btn-link">Explore Itineraries <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#booking" class="btn-secondary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Transfers (Reversed) -->
+        <section class="tour-section reversed">
+            <div class="image-box">
+                <img src="images/transfer.png" alt="Luxury Car Transfer">
+                <div class="img-overlay"></div>
+            </div>
+            <div class="content-box">
+                <div class="content-inner">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-car"></i>
+                    </div>
+                    <h2>Premium Transfers</h2>
+                    <p class="description">Comfortable and safe private transfer services. Whether from the airport or
+                        train station, start your journey in ultimate luxury and peace of mind.</p>
+                    <div class="btn-group">
+                        <a href="transfers.html" class="btn-link">Book Transfer <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#booking" class="btn-secondary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Aral Sea Adventures -->
+        <section class="tour-section">
+            <div class="image-box">
+                <img src="images/aral_sea.png" alt="Aral Sea Coast">
+                <div class="img-overlay"></div>
+            </div>
+            <div class="content-box">
+                <div class="content-inner">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-ship"></i>
+                    </div>
+                    <h2>Aral Sea Adventures</h2>
+                    <p class="description">A cinematic two-day trip to the Muynak Ship Graveyard and the receding Aral
+                        Sea. Witness the haunting beauty and revival of nature at the edge of the world.</p>
+                    <div class="btn-group">
+                        <a href="aral_sea.html" class="btn-link">View Adventure <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#booking" class="btn-secondary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Khiva Walking Tour (Reversed) -->
+        <section class="tour-section reversed">
+            <div class="image-box">
+                <img src="images/walking_tour.png" alt="Khiva Minaret">
+                <div class="img-overlay"></div>
+            </div>
+            <div class="content-box">
+                <div class="content-inner">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-person-walking"></i>
+                    </div>
+                    <h2>Khiva Walking Tour</h2>
+                    <p class="description">Walk through time in Ichan Kala. Our qualified guides will reveal the secrets
+                        hidden within the turquoise tiles and ancient mud walls of this open-air museum.</p>
+                    <div class="btn-group">
+                        <a href="walking_tour.html" class="btn-link">Start Walking <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#booking" class="btn-secondary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Booking Section -->
+    <section class="booking-section" id="booking">
+        <div class="booking-container">
+            <h2>Book Your Journey</h2>
+            <p class="subtitle">Ready to explore? Fill out the form below and we will contact you shortly.</p>
+
+            <form class="booking-form" id="bookingForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="example@gmail.com"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Contact (Phone/Telegram)</label>
+                        <input type="text" id="contact" name="contact" class="form-control" placeholder="94-315-37-00"
+                            required oninput="this.value = this.value.replace(/[^0-9+\-]/g, '')">
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="text" id="date" name="date" class="form-control" placeholder="Select Date"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Select Tour</label>
+                        <select id="tour" name="tour" class="form-control" required>
+                            <option value="" disabled selected>Select Your Journey</option>
+                            <optgroup label="Walking Tours">
+                                <option value="Khiva City Walking Tour">Khiva City Walking Tour (Ichan Kala)</option>
+                            </optgroup>
+                            <optgroup label="Day Trips (Return to Khiva)">
+                                <option value="Three Fortresses Tour">Three Fortresses Tour (Kyzyl, Toprak, Ayaz Kala)
+                                </option>
+                                <option value="Five Fortresses Tour">Five Fortresses Tour (includes Guldursun, Qoy
+                                    Qirilgan)</option>
+                                <option value="Seven Fortresses Tour">Seven Fortresses Tour (includes Janbas Kala)
+                                </option>
+                                <option value="Nine Fortresses Tour">Nine Fortresses Tour (includes Kurgashin Kala)
+                                </option>
+                                <option value="Badai Tugai + Fortresses">Badai Tugai Nature Reserve + Three Fortresses
+                                </option>
+                                <option value="Nukus Museum Tour">Nukus Museum & Chilpik Kala Tour</option>
+                                <option value="Nukus Museum + Mizdakhan">Nukus Museum & Mizdakhan Necropolis Tour
+                                </option>
+                                <option value="Muynak Ship Cemetery Day Tour">Muynak Ship Cemetery & Aral Sea Museum (1
+                                    Day)</option>
+                                <option value="Nukus Museum via Fortresses">Nukus Museum via Ancient Fortresses</option>
+                            </optgroup>
+                            <optgroup label="Connecting Sightseeing Tours">
+                                <option value="Khiva to Nukus via Chilpik">Khiva to Nukus (Direct with Chilpik Kala)
+                                </option>
+                                <option value="Khiva to Nukus via 3 Fortresses">Khiva to Nukus via Three Fortresses
+                                </option>
+                                <option value="Khiva to Nukus via 4 Fortresses">Khiva to Nukus via Four Fortresses
+                                </option>
+                                <option value="Khiva to Nukus via Badai Tugai">Khiva to Nukus via Badai Tugai Reserve
+                                </option>
+                                <option value="Khiva to Nukus via Jampik">Khiva to Nukus via Jampik & Badai Tugai
+                                </option>
+                                <option value="Khiva to Bukhara via 3 Fortresses">Khiva to Bukhara via Three Fortresses
+                                </option>
+                                <option value="Khiva to Bukhara via 4 Fortresses">Khiva to Bukhara via Four Fortresses
+                                </option>
+                            </optgroup>
+                            <optgroup label="Aral Sea Expeditions (2 Days)">
+                                <option value="Aral Sea Classic">Aral Sea Adventure: Classic Route</option>
+                                <option value="Aral Sea Extended">Aral Sea Adventure: Extended (Sudochie Lake)</option>
+                                <option value="Aral Sea via Kungrad">Aral Sea Adventure: via Kungrad (Adyr)</option>
+                                <option value="Aral Sea from Nukus">Aral Sea Adventure: Starting from Nukus</option>
+                            </optgroup>
+                            <optgroup label="Premium Transfers">
+                                <option value="Transfer: Urgench Airport to Khiva">Transfer: Urgench Airport to Khiva
+                                </option>
+                                <option value="Transfer: Urgench Station to Khiva">Transfer: Urgench Train Station to
+                                    Khiva</option>
+                                <option value="Transfer: Khiva Station Local">Transfer: Khiva Train Station Local
+                                </option>
+                                <option value="Transfer: Khiva to Bukhara">Transfer: Khiva to Bukhara</option>
+                                <option value="Transfer: Khiva to Nukus">Transfer: Khiva to Nukus</option>
+                                <option value="Custom Route Inquiry">Other / Custom Bespoke Route</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of People</label>
+                        <input type="number" id="people" name="people" class="form-control" min="1" placeholder="2"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Additional Requests</label>
+                    <textarea id="message" name="message" class="form-control" rows="3"
+                        placeholder="Any special requirements?"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Send Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-socials">
+            <a href="https://www.facebook.com/meroskhiva" class="social-icon" target="_blank"><i
+                    class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://t.me/ZiyovaddinMatkarimov" class="social-icon" target="_blank"><i
+                    class="fa-brands fa-telegram"></i></a>
+            <a href="https://wa.me/998887903293" class="social-icon" target="_blank"><i
+                    class="fa-brands fa-whatsapp"></i></a>
+        </div>
+
+        <div class="footer-contact">
+            <div class="contact-item">
+                <a href="tel:+998943153700" style="text-decoration: none; color: inherit;">
+                    <i class="fa-solid fa-phone"></i> +998 94 315 37 00
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="tel:+998887903293" style="text-decoration: none; color: inherit;">
+                    <i class="fa-solid fa-phone"></i> +998 88 790 32 93
+                </a>
+            </div>
+        </div>
+
+        <hr class="footer-divider">
+
+        <p class="copyright">&copy; 2026 Meros Travel. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="scrollTopBtn">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        // Initialize Flatpickr
+        flatpickr("#date", {
+            minDate: "today",
+            dateFormat: "Y-m-d",
+            animate: true,
+            disableMobile: true
+        });
+
+        // Form Submission Logic
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+
+            const templateParams = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                contact: document.getElementById('contact').value,
+                tour: document.getElementById('tour').value,
+                date: document.getElementById('date').value,
+                people: document.getElementById('people').value,
+                message: document.getElementById('message').value || "No additional info"
+            };
+
+            emailjs.send('service_n4nb5ob', 'template_vep6qxe', templateParams)
+                .then(function () {
+                    alert('Success! Your booking inquiry has been sent. We will contact you shortly.');
+                    document.getElementById('bookingForm').reset();
+                }, function (error) {
+                    alert('An error occurred. Please try again or contact us via Telegram.');
+                    console.log('EmailJS Error:', error);
+                })
+                .finally(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                });
+        });
+
+        // Smooth Scroll to Top
+        document.getElementById('scrollTopBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Show/Hide Scroll Button
+        window.onscroll = function () {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                document.getElementById('scrollTopBtn').style.opacity = '1';
+                document.getElementById('scrollTopBtn').style.visibility = 'visible';
+            } else {
+                document.getElementById('scrollTopBtn').style.opacity = '0';
+                document.getElementById('scrollTopBtn').style.visibility = 'hidden';
+            }
+        };
+        // Mobile Menu Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            navToggle.querySelector('i').classList.toggle('fa-bars-staggered');
+            navToggle.querySelector('i').classList.toggle('fa-xmark');
+        });
+
+        navOverlay.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            navOverlay.classList.remove('active');
+            navToggle.querySelector('i').classList.add('fa-bars-staggered');
+            navToggle.querySelector('i').classList.remove('fa-xmark');
+        });
+
+        // Nav Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>

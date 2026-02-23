@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        .lang-switcher {
+            position: relative;
+            display: inline-block;
+            margin-left: 1rem;
+        }
+
+        .lang-switcher button#langBtn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.05rem;
+            color: var(--primary-gold);
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+            font-family: inherit;
+            font-weight: 600;
+            transition: color 0.2s;
+            filter: drop-shadow(0 0 6px #fff7c1) drop-shadow(0 0 2px #d4af37);
+            text-shadow: 0 0 6px #fff7c1, 0 0 2px #d4af37;
+        }
+
+        .lang-switcher button#langBtn:hover {
+            color: var(--primary-gold-hover);
+        }
+
+        .lang-switcher #langLabel {
+            margin-left: 0.3em;
+            font-size: 1em;
+            color: var(--primary-gold);
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-shadow: 0 0 6px #fff7c1, 0 0 2px #d4af37;
+        }
+
+        .lang-switcher #langDropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 2.2em;
+            background: #fff;
+            border: 1px solid var(--primary-gold);
+            border-radius: 6px;
+            min-width: 120px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            padding: 0.2em 0;
+        }
+
+        .lang-switcher .lang-option {
+            color: #222;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-switcher .lang-option:hover {
+            background: var(--primary-gold);
+            color: #fff;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aral Sea Expeditions - Meros Travel | Nukus & Muynak Tours</title>
+    <meta name="description"
+        content="Join Meros Travel for an unforgettable expedition to the Aral Sea. Visit the ship graveyard in Muynak, the Savitsky Museum in Nukus, and stay in yurts at the shore of the vanishing sea.">
+    <meta name="keywords"
+        content="Aral Sea tour, Muynak ship graveyard, Nukus tours, Karakalpakstan travel, Mizdakhan necropolis, Ustyuart Plateau, desert expedition Uzbekistan">
+
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("VFOlcr26fn2MPqXYK");
+        })();
+    </script>
+</head>
+
+<body>
+
+    <!-- Logo Navigation -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Meros Travel">
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="day_trips.html" class="nav-link">Day Trips</a></li>
+                <li><a href="aral_sea.html" class="nav-link active">Aral Sea</a></li>
+                <li><a href="walking_tour.html" class="nav-link">Walking Tour</a></li>
+                <li><a href="transfers.html" class="nav-link">Transfers</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+            </ul>
+
+
+        </div>
+    </nav>
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Hero Section -->
+    <header class="page-hero" style="background-image: url('images/aral_sea.png');">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>Aral Sea Expeditions</h1>
+            <p class="subtitle">Witness the haunting beauty of the vanishing sea. 4 Unique Routes.</p>
+            <a href="#booking" class="btn-link" style="margin-top: 2rem;">Book an Expedition <i
+                    class="fa-solid fa-arrow-down"></i></a>
+        </div>
+    </header>
+
+    <div class="container main-wrapper">
+
+        <!-- Top Navigation for Options -->
+        <div class="tour-tabs aral-tabs">
+            <button class="tab-btn active" data-target="option-1">Option 1: Classic</button>
+            <button class="tab-btn" data-target="option-2">Option 2: Extended (Sudochie)</button>
+            <button class="tab-btn" data-target="option-3">Option 3: Via Kungrad</button>
+            <button class="tab-btn" data-target="option-4">Option 4: From Nukus</button>
+        </div>
+
+        <!-- OPTION 1: CLASSIC -->
+        <div id="option-1" class="tour-category active">
+            <div class="aral-card">
+                <div class="aral-header">
+                    <h2>Aral Sea Adventure (Classic)</h2>
+                    <p class="route-badge"><i class="fa-solid fa-route"></i> Khiva - Chilpik - Muynak - Aral Sea -
+                        Mizdakhan - Khiva</p>
+                </div>
+
+                <div class="aral-grid">
+                    <div class="aral-stats">
+                        <div class="stat-item"><i class="fa-regular fa-calendar"></i> <span>2 Days / 1 Night</span>
+                        </div>
+                        <div class="stat-item"><i class="fa-regular fa-eye"></i> <span>Sightseeing: 6-8 hrs</span></div>
+                        <div class="stat-item"><i class="fa-solid fa-car"></i> <span>Driving: 16-18 hrs</span></div>
+                        <div class="stat-item"><i class="fa-regular fa-clock"></i> <span>Start: 06:00 AM</span></div>
+                    </div>
+
+                    <div class="aral-price-box" style="cursor: pointer;" data-tour-value="Aral Sea Adventure: Classic"
+                        onclick="selectAralTour(this)">
+                        <h3>Private Tour Rates</h3>
+                        <div class="price-row"><span>1 Pax</span> <strong>$500</strong></div>
+                        <div class="price-row"><span>2 Pax</span> <strong>$540</strong></div>
+                        <div class="price-row"><span>3 Pax</span> <strong>$580</strong></div>
+                        <div class="price-row"><span>4 Pax</span> <strong>$620</strong></div>
+                        <p class="included-note">Included: Transportation (4WD & Sedan), Yurt Camp, Dinner, Breakfast.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="aral-desc">
+                    <h3>About this Tour</h3>
+                    <p>We are happy to offer this tour!!! Once one of the largest inland lakes in the world, the Aral
+                        Sea has shrunk significantly in recent decades. Located in Central Asia, it borders Kazakhstan
+                        in the north and Uzbekistan in the south. Historically, the Aral Sea has been an important
+                        source of water and fish for the surrounding areas, but since the 1960s, it has been drying up
+                        due to the diversion of the rivers that fed it, particularly the Amudarya and Syrdarya, for
+                        irrigation purposes during the Soviet era. As a result, the water level of the Aral Sea dropped
+                        sharply and its volume decreased by almost 90%.</p>
+                </div>
+
+                <div class="timeline-section">
+                    <h3>Itinerary</h3>
+
+                    <!-- Day 1 -->
+                    <div class="day-block">
+                        <h4 class="day-title">Day 1</h4>
+                        <ul class="timeline">
+                            <li>Check point: Start early morning at 6:00 am from Khiva (Sedan car).</li>
+                            <li>Visit Chilpik Kala (Tower of Silence).</li>
+                            <li>Visit Nukus Art Museum.</li>
+                            <li>Arrival in Muynak, lunch at local cafe.</li>
+                            <li>Visit Muynak State Local History Museum (watch history video).</li>
+                            <li>Visit the Ship Graveyard.</li>
+                            <li><strong>Transfer to 4WD:</strong> Start Aral Sea trip.</li>
+                            <li>Overview of Ustyurt Plateau canyons (Cosmic landscape) & Tombs of Nomads.</li>
+                            <li>Arrival to Aral Sea (~18:30). Stroll along seashore, swimming opportunity.</li>
+                            <li>Overnight at Yurt Camp (Sheraga/Fresh water shower/Restroom).</li>
+                            <li>19:30 Dinner in dining room.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Day 2 -->
+                    <div class="day-block">
+                        <h4 class="day-title">Day 2</h4>
+                        <ul class="timeline">
+                            <li>Sunrise viewing over the Aral Sea.</li>
+                            <li>07:00 Breakfast.</li>
+                            <li>08:00 Departure for return journey.</li>
+                            <li>Visit Kurgancha-kala (XII-XVI c.) fortified trading post.</li>
+                            <li>Arrive Muynak, change 4WD back to Sedan. Lunch at local cafe.</li>
+                            <li>Visit Mizdakhan Necropolis complex (XIV c.).</li>
+                            <li>Return to Khiva (Drop off at Khiva/Nukus/Urgench airport). End of tour.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPTION 2: EXTENDED -->
+        <div id="option-2" class="tour-category">
+            <div class="aral-card">
+                <div class="aral-header">
+                    <h2>Aral Sea & Sudochie (Extended)</h2>
+                    <p class="route-badge"><i class="fa-solid fa-route"></i> Khiva - Muynak - Aral Sea - Sudochie Lake -
+                        Nukus - Khiva</p>
+                </div>
+
+                <div class="aral-grid">
+                    <div class="aral-stats">
+                        <div class="stat-item"><i class="fa-regular fa-calendar"></i> <span>2 Days / 1 Night</span>
+                        </div>
+                        <div class="stat-item"><i class="fa-regular fa-eye"></i> <span>Sightseeing: 6-8 hrs</span></div>
+                        <div class="stat-item"><i class="fa-solid fa-car"></i> <span>Driving: 16-18 hrs</span></div>
+                        <div class="stat-item"><i class="fa-regular fa-clock"></i> <span>Start: 06:00 AM</span></div>
+                    </div>
+
+                    <div class="aral-price-box" style="cursor: pointer;" data-tour-value="Aral Sea Adventure: Extended"
+                        onclick="selectAralTour(this)">
+                        <h3>Private Tour Rates</h3>
+                        <div class="price-row"><span>1 Pax</span> <strong>$580</strong></div>
+                        <div class="price-row"><span>2 Pax</span> <strong>$620</strong></div>
+                        <div class="price-row"><span>3 Pax</span> <strong>$660</strong></div>
+                        <div class="price-row"><span>4 Pax</span> <strong>$700</strong></div>
+                        <p class="included-note">Included: Transportation (4WD & Sedan), Yurt Camp, Dinner, Breakfast.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="aral-desc">
+                    <h3>About this Tour</h3>
+                    <p>We are happy to offer this tour!!! Once one of the largest inland lakes in the world, the Aral
+                        Sea has shrunk significantly in recent decades. Located in Central Asia, it borders Kazakhstan
+                        in the north and Uzbekistan in the south. Historically, the Aral Sea has been an important
+                        source of water and fish for the surrounding areas, but since the 1960s, it has been drying up
+                        due to the diversion of the rivers that fed it, particularly the Amudarya and Syrdarya, for
+                        irrigation purposes during the Soviet era. As a result, the water level of the Aral Sea dropped
+                        sharply and its volume decreased by almost 90%.</p>
+                </div>
+
+                <div class="timeline-section">
+                    <h3>Itinerary</h3>
+                    <div class="day-block">
+                        <h4 class="day-title">Day 1</h4>
+                        <ul class="timeline">
+                            <li>Start 06:00 am from Khiva (Sedan).</li>
+                            <li>Visit Chilpik Kala.</li>
+                            <li>Visit Nukus Art Museum.</li>
+                            <li><strong>Change to 4WD in Nukus.</strong></li>
+                            <li>Arrival in Muynak, lunch.</li>
+                            <li>Visit Muynak History Museum (video) & Ship Graveyard.</li>
+                            <li>Ustyurt Plateau canyons & Tombs of Nomads.</li>
+                            <li>Arrival to Aral Sea (~18:30). Swim/Stroll.</li>
+                            <li>Overnight at Yurt Camp. 19:30 Dinner.</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h4 class="day-title">Day 2</h4>
+                        <ul class="timeline">
+                            <li>Sunrise & Breakfast (07:00).</li>
+                            <li>08:00 Departure.</li>
+                            <li>Visit Kurgancha-kala (XII-XVI c.).</li>
+                            <li>Visit Kubla-Ustyurt (abandoned Soviet town).</li>
+                            <li>Visit Urga (abandoned fishing village) on Sudochie Lake.</li>
+                            <li>"Sudochie" State Ornithological Reserve (Bird watching, flamingos).</li>
+                            <li>Visit Mizdakhan Necropolis.</li>
+                            <li>Arrive Nukus, change to Sedan. return to Khiva. End of tour.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPTION 3: VIA KUNGRAD -->
+        <div id="option-3" class="tour-category">
+            <div class="aral-card">
+                <div class="aral-header">
+                    <h2>Aral Sea Adventure (via Kungrad)</h2>
+                    <p class="route-badge"><i class="fa-solid fa-route"></i> Circular Route via Kungrad & Sudochie</p>
+                </div>
+
+                <div class="aral-grid">
+                    <div class="aral-stats">
+                        <div class="stat-item"><i class="fa-regular fa-calendar"></i> <span>2 Days / 1 Night</span>
+                        </div>
+                        <div class="stat-item"><i class="fa-regular fa-eye"></i> <span>Sightseeing: 6-8 hrs</span></div>
+                        <div class="stat-item"><i class="fa-solid fa-car"></i> <span>Driving: 16-18 hrs</span></div>
+                        <div class="stat-item"><i class="fa-regular fa-clock"></i> <span>Start: 06:00 AM</span></div>
+                    </div>
+
+                    <div class="aral-price-box" style="cursor: pointer;"
+                        data-tour-value="Aral Sea Adventure: via Kungrad" onclick="selectAralTour(this)">
+                        <h3>Private Tour Rates</h3>
+                        <div class="price-row"><span>1 Pax</span> <strong>$550</strong></div>
+                        <div class="price-row"><span>2 Pax</span> <strong>$590</strong></div>
+                        <div class="price-row"><span>3 Pax</span> <strong>$630</strong></div>
+                        <div class="price-row"><span>4 Pax</span> <strong>$670</strong></div>
+                        <p class="included-note">Included: Transportation (4WD & Sedan), Yurt Camp, Dinner, Breakfast.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="aral-desc">
+                    <h3>About this Tour</h3>
+                    <p>We are happy to offer this tour!!! Once one of the largest inland lakes in the world, the Aral
+                        Sea has shrunk significantly in recent decades. The water level of the Aral Sea dropped sharply
+                        and its volume decreased by almost 90%.</p>
+                </div>
+
+                <div class="timeline-section">
+                    <h3>Itinerary</h3>
+                    <div class="day-block">
+                        <h4 class="day-title">Day 1</h4>
+                        <ul class="timeline">
+                            <li>Start 06:00 am from Khiva (Sedan).</li>
+                            <li>Visit Chilpik Kala & Nukus Art Museum.</li>
+                            <li>Arrival in Muynak, lunch.</li>
+                            <li><strong>Start 4WD from Muynak.</strong></li>
+                            <li>Visit Muynak History Museum & Ship Graveyard.</li>
+                            <li>Ustyurt Plateau canyons & Tombs of Nomads.</li>
+                            <li>Arrival to Aral Sea (~18:30). Swim/Stroll.</li>
+                            <li>Overnight at Yurt Camp. 19:30 Dinner.</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h4 class="day-title">Day 2</h4>
+                        <ul class="timeline">
+                            <li>Sunrise & Breakfast (07:00).</li>
+                            <li>08:00 Departure.</li>
+                            <li>Visit Kurgancha-kala.</li>
+                            <li>Visit Kubla-Ustyurt & Urga (Sudochie Lake).</li>
+                            <li>Visit Mizdakhan Necropolis.</li>
+                            <li>Arrive Kungrad, change to Sedan. Return to One of (Khiva/Nukus/Urgench). End.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OPTION 4: FROM NUKUS -->
+        <div id="option-4" class="tour-category">
+            <div class="aral-card">
+                <div class="aral-header">
+                    <h2>Nukus to Aral Sea (4WD Only)</h2>
+                    <p class="route-badge"><i class="fa-solid fa-route"></i> Nukus - Aral Sea - Sudochie - Nukus</p>
+                </div>
+
+                <div class="aral-grid">
+                    <div class="aral-stats">
+                        <div class="stat-item"><i class="fa-regular fa-calendar"></i> <span>2 Days / 1 Night</span>
+                        </div>
+                        <div class="stat-item"><i class="fa-regular fa-eye"></i> <span>Sightseeing: 6-8 hrs</span></div>
+                        <div class="stat-item"><i class="fa-solid fa-car"></i> <span>Driving: 12-14 hrs</span></div>
+                        <div class="stat-item"><i class="fa-regular fa-clock"></i> <span>Start: 06:00 AM</span></div>
+                    </div>
+
+                    <div class="aral-price-box" style="cursor: pointer;"
+                        data-tour-value="Aral Sea Adventure: from Nukus" onclick="selectAralTour(this)">
+                        <h3>Private Tour Rates</h3>
+                        <div class="price-row"><span>1 Pax</span> <strong>$490</strong></div>
+                        <div class="price-row"><span>2 Pax</span> <strong>$530</strong></div>
+                        <div class="price-row"><span>3 Pax</span> <strong>$570</strong></div>
+                        <div class="price-row"><span>4 Pax</span> <strong>$610</strong></div>
+                        <p class="included-note">Included: Transportation (4WD only), Yurt Camp, Dinner, Breakfast.</p>
+                    </div>
+                </div>
+
+                <div class="aral-desc">
+                    <h3>About this Tour</h3>
+                    <p>We are happy to offer this tour!!! Once one of the largest inland lakes in the world, the Aral
+                        Sea has shrunk significantly in recent decades. The water level of the Aral Sea dropped sharply
+                        and its volume decreased by almost 90%.</p>
+                </div>
+
+                <div class="timeline-section">
+                    <h3>Itinerary</h3>
+                    <div class="day-block">
+                        <h4 class="day-title">Day 1</h4>
+                        <ul class="timeline">
+                            <li>Start from Nukus (4WD).</li>
+                            <li>Visit Mizdakhan Necropolis.</li>
+                            <li>Arrival in Muynak, lunch.</li>
+                            <li>Visit Muynak History Museum & Ship Graveyard.</li>
+                            <li>Ustyurt Plateau canyons & Tombs of Nomads.</li>
+                            <li>Arrival to Aral Sea. Swim/Stroll.</li>
+                            <li>Overnight at Yurt Camp. 19:30 Dinner.</li>
+                        </ul>
+                    </div>
+                    <div class="day-block">
+                        <h4 class="day-title">Day 2</h4>
+                        <ul class="timeline">
+                            <li>Sunrise over Aral Sea.</li>
+                            <li>07:00 Breakfast. 08:00 Departure.</li>
+                            <li>Visit Kurgancha-kala.</li>
+                            <li>Visit Kubla-Ustyurt & Urga (fishing village remains).</li>
+                            <li>"Sudochie" State Ornithological Reserve.</li>
+                            <li>Arrive to Nukus. End of tour.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Common Notes Footer -->
+        <div class="aral-notes">
+            <h3><i class="fa-solid fa-triangle-exclamation"></i> Important Notes for Visitors</h3>
+            <div class="notes-grid">
+                <ul>
+                    <li>Drivers will stop at sightseeing places for photos.</li>
+                    <li>Mobile devices/cameras can be recharged at the yurt camp.</li>
+                    <li>It is cold at the seashore in mornings/evenings. Bring a sweater/jacket.</li>
+                    <li>If you have chronic illnesses, don't forget your medication.</li>
+                </ul>
+                <ul>
+                    <li>Always carry water with you.</li>
+                    <li>Stay close to your guide and vehicle.</li>
+                    <li><strong>Safety:</strong> Stay at least 2 meters away from the edge of Ustyurt Plateau.</li>
+                    <li><strong>Not Included:</strong> Entrance tickets, lunch, guide ($150), etc.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Booking Section -->
+    <section class="booking-section" id="booking">
+        <div class="booking-container">
+            <h2>Book Your Expedition</h2>
+            <form class="booking-form" id="bookingForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact (Phone/Telegram)</label>
+                        <input type="text" id="contact" name="contact" class="form-control"
+                            placeholder="+998 90 123 45 67" required
+                            oninput="this.value = this.value.replace(/[^0-9+\-]/g, '')">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Select Option</label>
+                        <select id="tour" name="tour" class="form-control" required>
+                            <optgroup label="Aral Sea Expeditions (2 Days)">
+                                <option value="Aral Sea Adventure: Classic" selected>Option 1: Aral Sea Adventure
+                                    (Classic Route)</option>
+                                <option value="Aral Sea Adventure: Extended">Option 2: Aral Sea & Sudochie (Extended
+                                    Route)</option>
+                                <option value="Aral Sea Adventure: via Kungrad">Option 3: Aral Sea Adventure (via
+                                    Kungrad/Adyr)</option>
+                                <option value="Aral Sea Adventure: from Nukus">Option 4: Nukus to Aral Sea (4WD Only)
+                                </option>
+                            </optgroup>
+                            <optgroup label="Single Day Tours">
+                                <option value="Muynak Ship Cemetery Day Tour">Muynak Ship Cemetery & Aral Sea Museum (1
+                                    Day)</option>
+                                <option value="Three Fortresses Day Tour">Three Fortresses Ancient Citadels Tour
+                                </option>
+                                <option value="Khiva Walking Tour">Khiva City Walking Tour (Ichan Kala)</option>
+                            </optgroup>
+                            <optgroup label="Other Services">
+                                <option value="Premium Transfer Service">Premium Private Transfer</option>
+                                <option value="Custom Tour Request">Bespoke Custom Journey Inquiry</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="text" id="date" name="date" class="form-control" placeholder="Select Date"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Vehicle Preference</label>
+                        <select id="vehicle" name="vehicle" class="form-control" required>
+                            <option value="SUV (4WD)">SUV (4WD) - Recommended</option>
+                            <option value="Sedan">Sedan (Partial Route)</option>
+                            <option value="Minivan">Minivan (Large Group)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of People</label>
+                        <input type="number" id="people" name="people" class="form-control" min="1" placeholder="2"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Additional Requests</label>
+                    <textarea id="message" name="message" class="form-control" rows="3"
+                        placeholder="Hotel pickup, dietary needs, etc."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Request Booking</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-socials">
+            <a href="https://www.facebook.com/meroskhiva" class="social-icon" target="_blank"><i
+                    class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://t.me/ZiyovaddinMatkarimov" class="social-icon" target="_blank"><i
+                    class="fa-brands fa-telegram"></i></a>
+            <a href="https://wa.me/998887903293" class="social-icon" target="_blank"><i
+                    class="fa-brands fa-whatsapp"></i></a>
+        </div>
+
+        <div class="footer-contact">
+            <div class="contact-item">
+                <a href="tel:+998943153700" style="text-decoration: none; color: inherit;">
+                    <i class="fa-solid fa-phone"></i> +998 94 315 37 00
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="tel:+998887903293" style="text-decoration: none; color: inherit;">
+                    <i class="fa-solid fa-phone"></i> +998 88 790 32 93
+                </a>
+            </div>
+        </div>
+
+        <hr class="footer-divider">
+
+        <p class="copyright">&copy; 2026 Meros Travel. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="scrollTopBtn">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Tab Functionality
+        const tabs = document.querySelectorAll('.tab-btn');
+        const contents = document.querySelectorAll('.tour-category');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.target).classList.add('active');
+            });
+        });
+
+        // Aral Tour Selection Function
+        function selectAralTour(priceBox) {
+            const tourValue = priceBox.dataset.tourValue;
+
+            // Remove previous selections and hints
+            document.querySelectorAll('.aral-price-box').forEach(box => {
+                box.classList.remove('selected', 'hint-available');
+            });
+            document.querySelectorAll('.aral-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+
+            // Highlight selected elements
+            priceBox.classList.add('selected');
+            priceBox.closest('.aral-card').classList.add('selected');
+
+            // Add hint animation to other clickable price boxes after a short delay
+            setTimeout(() => {
+                document.querySelectorAll('.aral-price-box[onclick]').forEach(box => {
+                    if (box !== priceBox) {
+                        box.classList.add('hint-available');
+                        // Remove hint class after animation completes
+                        setTimeout(() => {
+                            box.classList.remove('hint-available');
+                        }, 600);
+                    }
+                });
+            }, 500);
+
+            // Update form
+            const tourSelect = document.getElementById('tour');
+            if (tourValue && tourSelect) {
+                tourSelect.value = tourValue;
+            }
+
+            // Show toast notification
+            showToast(tourValue);
+
+            // Scroll to booking after delay
+            setTimeout(() => {
+                document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+            }, 800);
+        }
+
+        // Toast notification function
+        function showToast(tour) {
+            // Remove existing toast if any
+            const existingToast = document.querySelector('.toast-notification');
+            if (existingToast) {
+                existingToast.remove();
+            }
+
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = 'toast-notification';
+            toast.innerHTML = `
+                <i class="fa-solid fa-circle-check"></i>
+                <div class="toast-content">
+                    <div class="toast-title">Selected!</div>
+                    <div class="toast-message">${tour}</div>
+                </div>
+            `;
+
+            document.body.appendChild(toast);
+
+            // Show toast with animation
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 100);
+
+            // Hide toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 500);
+            }, 3000);
+        }
+    </script>
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        // Initialize Flatpickr
+        flatpickr("#date", {
+            minDate: "today",
+            dateFormat: "Y-m-d",
+            animate: true,
+            disableMobile: true
+        });
+
+        // Form Submission Logic
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+
+            const name = document.getElementById('name').value;
+            const contact = document.getElementById('contact').value;
+            const tour = document.getElementById('tour').value;
+            const date = document.getElementById('date').value;
+            const vehicle = document.getElementById('vehicle').value;
+            const people = document.getElementById('people').value;
+            const message = document.getElementById('message').value;
+
+            const templateParams = {
+                name: name,
+                contact: contact,
+                tour: tour,
+                date: date,
+                vehicle: vehicle,
+                people: people,
+                message: message || "No additional info"
+            };
+
+            emailjs.send('service_n4nb5ob', 'template_vep6qxe', templateParams)
+                .then(function () {
+                    alert('Success! Your booking inquiry has been sent. We will contact you shortly.');
+                    document.getElementById('bookingForm').reset();
+                }, function (error) {
+                    alert('An error occurred. Please try again or contact us via Telegram.');
+                    console.log('EmailJS Error:', error);
+                })
+                .finally(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                });
+        });
+
+        // Smooth Scroll to Top
+        document.getElementById('scrollTopBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Show/Hide Scroll Button
+        window.onscroll = function () {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                document.getElementById('scrollTopBtn').style.opacity = '1';
+                document.getElementById('scrollTopBtn').style.visibility = 'visible';
+            } else {
+                document.getElementById('scrollTopBtn').style.opacity = '0';
+                document.getElementById('scrollTopBtn').style.visibility = 'hidden';
+            }
+        };
+        // Mobile Menu Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            navToggle.querySelector('i').classList.toggle('fa-bars-staggered');
+            navToggle.querySelector('i').classList.toggle('fa-xmark');
+        });
+
+        navOverlay.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            navOverlay.classList.remove('active');
+            navToggle.querySelector('i').classList.add('fa-bars-staggered');
+            navToggle.querySelector('i').classList.remove('fa-xmark');
+        });
+
+        // Nav Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        .lang-switcher {
+            position: relative;
+            display: inline-block;
+            margin-left: 1rem;
+        }
+
+        .lang-switcher button#langBtn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.05rem;
+            color: var(--primary-gold);
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+            font-family: inherit;
+            font-weight: 600;
+            transition: color 0.2s;
+            filter: drop-shadow(0 0 6px #fff7c1) drop-shadow(0 0 2px #d4af37);
+            text-shadow: 0 0 6px #fff7c1, 0 0 2px #d4af37;
+        }
+
+        .lang-switcher button#langBtn:hover {
+            color: var(--primary-gold-hover);
+        }
+
+        .lang-switcher #langLabel {
+            margin-left: 0.3em;
+            font-size: 1em;
+            color: var(--primary-gold);
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-shadow: 0 0 6px #fff7c1, 0 0 2px #d4af37;
+        }
+
+        .lang-switcher #langDropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 2.2em;
+            background: #fff;
+            border: 1px solid var(--primary-gold);
+            border-radius: 6px;
+            min-width: 120px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            padding: 0.2em 0;
+        }
+
+        .lang-switcher .lang-option {
+            color: #222;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .lang-switcher .lang-option:hover {
+            background: var(--primary-gold);
+            color: #fff;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Transfers Uzbekistan - Meros Travel | SUV & Minibus Services</title>
+    <meta name="description"
+        content="Reliable and comfortable private transfers across Uzbekistan. Book SUVs, Minivans, and Minibuses for routes from Khiva to Bukhara, Nukus, and more.">
+    <meta name="keywords"
+        content="Uzbekistan private transfer, Khiva to Bukhara transfer, SUV rental Uzbekistan, minibus with driver Khiva, airport transfer Nukus, Urgench airport shuttle">
+
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("VFOlcr26fn2MPqXYK");
+        })();
+    </script>
+</head>
+
+<body>
+
+    <!-- Logo Navigation -->
+    <nav class="main-nav">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Meros Travel">
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="day_trips.html" class="nav-link">Day Trips</a></li>
+                <li><a href="aral_sea.html" class="nav-link">Aral Sea</a></li>
+                <li><a href="walking_tour.html" class="nav-link">Walking Tour</a></li>
+                <li><a href="transfers.html" class="nav-link active">Transfers</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+            </ul>
+
+        </div>
+    </nav>
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Hero Section -->
+    <header class="page-hero" style="background-image: url('images/transfer.png');">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>Premium Transfers</h1>
+            <p class="subtitle">Comfort, Safety, and Style. Start your journey with our professional chauffeurs.</p>
+            <a href="#booking" class="btn-link" style="margin-top: 2rem;">Book a Transfer <i
+                    class="fa-solid fa-arrow-down"></i></a>
+
+        </div>
+    </header>
+
+    <div class="container main-wrapper">
+
+        <!-- Tabs -->
+        <div class="tour-tabs">
+            <button class="tab-btn active" data-target="local-transfers">Airport & Station</button>
+            <button class="tab-btn" data-target="intercity-transfers">Inter-City (Bukhara/Nukus)</button>
+        </div>
+
+        <!-- Section 1: Local Transfers -->
+        <div id="local-transfers" class="tour-category active">
+
+            <!-- Urgench Airport -->
+            <div class="trip-card" data-tour-value="Transfer: Urgench Airport to Khiva">
+                <div class="trip-summary">
+                    <div class="trip-info">
+                        <h2>Urgench Airport (UGC) <i class="fa-solid fa-arrow-right-long"
+                                style="font-size: 0.8em; margin: 0 10px;"></i> Khiva Hotel</h2>
+                        <div class="route-line">
+                            <i class="fa-solid fa-plane-arrival"></i> Meet & Greet at Arrival Hall
+                        </div>
+                    </div>
+                    <div class="trip-meta">
+                        <span class="duration"><i class="fa-regular fa-clock"></i> 40 mins</span>
+                        <div class="price-teaser">from <span>$15</span></div>
+                        <button class="expand-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                    </div>
+                </div>
+                <div class="trip-details">
+                    <div class="vehicle-grid">
+                        <div class="v-card" data-vehicle="Sedan"><i class="fa-solid fa-car-side"></i><span>Sedan
+                                (1-3)</span><strong>$15</strong></div>
+                        <div class="v-card" data-vehicle="SUV"><i class="fa-solid fa-truck-pickup"></i><span>SUV
+                                (1-4)</span><strong>$25</strong></div>
+                        <div class="v-card" data-vehicle="Minivan"><i class="fa-solid fa-van-shuttle"></i><span>Minivan
+                                (4-8)</span><strong>$35</strong></div>
+                        <div class="v-card" data-vehicle="Sprinter/Bus"><i class="fa-solid fa-bus"></i><span>Sprinter
+                                (10+)</span><strong>$50</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Urgench Train Station -->
+            <div class="trip-card" data-tour-value="Transfer: Urgench Station to Khiva">
+                <div class="trip-summary">
+                    <div class="trip-info">
+                        <h2>Urgench Train Station <i class="fa-solid fa-arrow-right-long"
+                                style="font-size: 0.8em; margin: 0 10px;"></i> Khiva Hotel</h2>
+                        <div class="route-line">
+                            <i class="fa-solid fa-train"></i> Train Station Pickup
+                        </div>
+                    </div>
+                    <div class="trip-meta">
+                        <span class="duration"><i class="fa-regular fa-clock"></i> 45 mins</span>
+                        <div class="price-teaser">from <span>$15</span></div>
+                        <button class="expand-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                    </div>
+                </div>
+                <div class="trip-details">
+                    <div class="vehicle-grid">
+                        <div class="v-card" data-vehicle="Sedan"><i class="fa-solid fa-car-side"></i><span>Sedan
+                                (1-3)</span><strong>$15</strong></div>
+                        <div class="v-card" data-vehicle="SUV"><i class="fa-solid fa-truck-pickup"></i><span>SUV
+                                (1-4)</span><strong>$25</strong></div>
+                        <div class="v-card" data-vehicle="Minivan"><i class="fa-solid fa-van-shuttle"></i><span>Minivan
+                                (4-8)</span><strong>$35</strong></div>
+                        <div class="v-card" data-vehicle="Sprinter/Bus"><i class="fa-solid fa-bus"></i><span>Sprinter
+                                (10+)</span><strong>$50</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Khiva Train Station -->
+            <div class="trip-card" data-tour-value="Transfer: Khiva Station to Hotel">
+                <div class="trip-summary">
+                    <div class="trip-info">
+                        <h2>Khiva Train Station <i class="fa-solid fa-arrow-right-long"
+                                style="font-size: 0.8em; margin: 0 10px;"></i> Khiva Hotel</h2>
+                        <div class="route-line">
+                            <i class="fa-solid fa-train"></i> Local Station Pickup
+                        </div>
+                    </div>
+                    <div class="trip-meta">
+                        <span class="duration"><i class="fa-regular fa-clock"></i> 10 mins</span>
+                        <div class="price-teaser">from <span>$5</span></div>
+                        <button class="expand-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                    </div>
+                </div>
+                <div class="trip-details">
+                    <div class="vehicle-grid">
+                        <div class="v-card" data-vehicle="Sedan"><i class="fa-solid fa-car-side"></i><span>Sedan
+                                (1-3)</span><strong>$5</strong></div>
+                        <div class="v-card" data-vehicle="SUV"><i class="fa-solid fa-truck-pickup"></i><span>SUV
+                                (1-4)</span><strong>$10</strong></div>
+                        <div class="v-card" data-vehicle="Minivan"><i class="fa-solid fa-van-shuttle"></i><span>Minivan
+                                (4-8)</span><strong>$15</strong></div>
+                        <div class="v-card" data-vehicle="Sprinter/Bus"><i class="fa-solid fa-bus"></i><span>Sprinter
+                                (10+)</span><strong>$20</strong></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Section 2: Inter-City Transfers -->
+        <div id="intercity-transfers" class="tour-category">
+
+            <!-- Khiva - Bukhara -->
+            <div class="trip-card" data-tour-value="Transfer: Khiva to Bukhara">
+                <div class="trip-summary">
+                    <div class="trip-info">
+                        <h2>Khiva <i class="fa-solid fa-arrow-right-long" style="font-size: 0.8em; margin: 0 10px;"></i>
+                            Bukhara</h2>
+                        <div class="route-line">
+                            <i class="fa-solid fa-road"></i> Direct transfer via Kyzylkum Desert
+                        </div>
+                    </div>
+                    <div class="trip-meta">
+                        <span class="duration"><i class="fa-regular fa-clock"></i> 6-7 hours</span>
+                        <div class="price-teaser">from <span>$80</span></div>
+                        <button class="expand-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                    </div>
+                </div>
+                <div class="trip-details">
+                    <div class="vehicle-grid">
+                        <div class="v-card" data-vehicle="Sedan"><span>Sedan (1-3)</span><strong>$80</strong></div>
+                        <div class="v-card" data-vehicle="SUV"><span>SUV (1-4)</span><strong>$120</strong></div>
+                        <div class="v-card" data-vehicle="Minivan"><span>Minivan (4-6)</span><strong>$150</strong></div>
+                        <div class="v-card" data-vehicle="Sprinter/Bus"><span>Minbus (10+)</span><strong>$180</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Khiva - Nukus -->
+            <div class="trip-card" data-tour-value="Transfer: Khiva to Nukus">
+                <div class="trip-summary">
+                    <div class="trip-info">
+                        <h2>Khiva <i class="fa-solid fa-arrow-right-long" style="font-size: 0.8em; margin: 0 10px;"></i>
+                            Nukus</h2>
+                        <div class="route-line">
+                            <i class="fa-solid fa-road"></i> Direct transfer to Nukus City or Airport
+                        </div>
+                    </div>
+                    <div class="trip-meta">
+                        <span class="duration"><i class="fa-regular fa-clock"></i> 2.5 - 3 hours</span>
+                        <div class="price-teaser">from <span>$50</span></div>
+                        <button class="expand-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                    </div>
+                </div>
+                <div class="trip-details">
+                    <div class="vehicle-grid">
+                        <div class="v-card" data-vehicle="Sedan"><span>Sedan (1-3)</span><strong>$50</strong></div>
+                        <div class="v-card" data-vehicle="SUV"><span>SUV (1-4)</span><strong>$70</strong></div>
+                        <div class="v-card" data-vehicle="Minivan"><span>Minivan (4-6)</span><strong>$90</strong></div>
+                        <div class="v-card" data-vehicle="Sprinter/Bus"><span>Minbus (10+)</span><strong>$110</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Info Footer -->
+        <div class="info-footer">
+            <div class="info-item included">
+                <i class="fa-solid fa-check-circle"></i>
+                <p><strong>Includes:</strong> Fuel, Driver, AC, Waiting Time (1hr)</p>
+            </div>
+            <div class="info-item alert">
+                <i class="fa-solid fa-circle-info"></i>
+                <p><strong>Note:</strong> Night rates (22:00-06:00) may apply.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Booking Section -->
+    <section class="booking-section" id="booking">
+        <div class="booking-container">
+            <h2>Book Your Transfer</h2>
+            <form class="booking-form" id="bookingForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact (Phone/Telegram)</label>
+                        <input type="text" id="contact" name="contact" class="form-control"
+                            placeholder="+998 90 123 45 67" required
+                            oninput="this.value = this.value.replace(/[^0-9+\-]/g, '')">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Select Route</label>
+                        <select id="tour" name="tour" class="form-control" required>
+                            <optgroup label="Local Airport & Station Transfers">
+                                <option value="Transfer: Urgench Airport to Khiva">Urgench Airport (UGC) to Khiva Hotel
+                                </option>
+                                <option value="Transfer: Urgench Station to Khiva">Urgench Train Station to Khiva Hotel
+                                </option>
+                                <option value="Transfer: Khiva Station to Hotel">Khiva local Train Station transfer
+                                </option>
+                            </optgroup>
+                            <optgroup label="Inter-City Private Transfers">
+                                <option value="Transfer: Khiva to Bukhara">Khiva to Bukhara (Direct Desert Crossing)
+                                </option>
+                                <option value="Transfer: Khiva to Nukus">Khiva to Nukus (Direct Transfer)</option>
+                                <option value="Transfer: Nukus to Khiva">Nukus to Khiva (Direct Transfer)</option>
+                                <option value="Transfer: Bukhara to Khiva">Bukhara to Khiva (Direct Transfer)</option>
+                            </optgroup>
+                            <optgroup label="Sightseeing Connecting Transfers">
+                                <option value="Transfer: Khiva to Bukhara via 3 Fortresses">Khiva to Bukhara via 3
+                                    Fortresses</option>
+                                <option value="Transfer: Khiva to Nukus via 3 Fortresses">Khiva to Nukus via 3
+                                    Fortresses</option>
+                                <option value="Transfer: Khiva to Nukus via 4 Fortresses">Khiva to Nukus via 4
+                                    Fortresses</option>
+                            </optgroup>
+                            <optgroup label="Bespoke Service">
+                                <option value="Custom Transfer Inquiry">Custom Multi-City Transfer Route</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="text" id="date" name="date" class="form-control" placeholder="Select Date"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Vehicle Type</label>
+                        <select id="vehicle" name="vehicle" class="form-control" required>
+                            <option value="Sedan">Sedan (1-3 pax)</option>
+                            <option value="SUV">SUV (1-4 pax)</option>
+                            <option value="Minivan">Minivan (4-8 pax)</option>
+                            <option value="Sprinter/Bus">Sprinter/Bus (10+ pax)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of People</label>
+                        <input type="number" id="people" name="people" class="form-control" min="1" placeholder="2"
+                            required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Additional Requests & Flight/Train details</label>
+                    <textarea id="message" name="message" class="form-control" rows="3"
+                        placeholder="Flight number, arrival time, etc."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Request Booking</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-socials">
+            <a href="https://www.facebook.com/meroskhiva" class="social-icon" target="_blank"><i
+                    class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://t.me/ZiyovaddinMatkarimov" class="social-icon" target="_blank"><i
+                    class="fa-brands fa-telegram"></i></a>
+            <a href="https://wa.me/998887903293" class="social-icon" target="_blank"><i
+                    class="fa-brands fa-whatsapp"></i></a>
+        </div>
+
+        <div class="footer-contact">
+            <div class="contact-item">
+                <a href="tel:+998943153700" style="text-decoration: none; color: inherit;">
+                    <i class="fa-solid fa-phone"></i> +998 94 315 37 00
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="tel:+998887903293" style="text-decoration: none; color: inherit;">
+                    <i class="fa-solid fa-phone"></i> +998 88 790 32 93
+                </a>
+            </div>
+        </div>
+
+        <hr class="footer-divider">
+
+        <p class="copyright">&copy; 2026 Meros Travel. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="scrollTopBtn">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Tab Functionality
+        const tabs = document.querySelectorAll('.tab-btn');
+        const contents = document.querySelectorAll('.tour-category');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.target).classList.add('active');
+            });
+        });
+
+        // Expand & Select Functionality
+        const cards = document.querySelectorAll('.trip-card');
+        const vCards = document.querySelectorAll('.v-card');
+
+        cards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('.v-card')) return;
+                card.classList.toggle('expanded');
+            });
+        });
+
+        vCards.forEach(vCard => {
+            vCard.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const tourCard = vCard.closest('.trip-card');
+                const tourValue = tourCard.dataset.tourValue;
+                const vehicleType = vCard.dataset.vehicle;
+
+                // Remove previous selections
+                document.querySelectorAll('.trip-card').forEach(card => card.classList.remove('selected'));
+                document.querySelectorAll('.v-card').forEach(card => card.classList.remove('selected'));
+
+                // Highlight selected cards
+                tourCard.classList.add('selected');
+                vCard.classList.add('selected');
+
+                const tourSelect = document.getElementById('tour');
+                if (tourValue) {
+                    tourSelect.value = tourValue;
+                }
+
+                const vehicleSelect = document.getElementById('vehicle');
+                if (vehicleType) {
+                    vehicleSelect.value = vehicleType;
+                }
+
+                // Show toast notification
+                showToast(tourValue, vehicleType);
+
+                // Scroll to booking form after a short delay
+                setTimeout(() => {
+                    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+                }, 800);
+            });
+        });
+
+        // Toast notification function
+        function showToast(tour, vehicle) {
+            // Remove existing toast if any
+            const existingToast = document.querySelector('.toast-notification');
+            if (existingToast) {
+                existingToast.remove();
+            }
+
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = 'toast-notification';
+            toast.innerHTML = `
+                <i class="fa-solid fa-circle-check"></i>
+                <div class="toast-content">
+                    <div class="toast-title">Selected!</div>
+                    <div class="toast-message">${tour} - ${vehicle}</div>
+                </div>
+            `;
+
+            document.body.appendChild(toast);
+
+            // Show toast with animation
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 100);
+
+            // Hide toast after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 500);
+            }, 3000);
+        }
+    </script>
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        // Initialize Flatpickr
+        flatpickr("#date", {
+            minDate: "today",
+            dateFormat: "Y-m-d",
+            animate: true,
+            disableMobile: true
+        });
+
+        // Form Submission Logic
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+
+            const name = document.getElementById('name').value;
+            const contact = document.getElementById('contact').value;
+            const tour = document.getElementById('tour').value;
+            const vehicle = document.getElementById('vehicle').value;
+            const date = document.getElementById('date').value;
+            const people = document.getElementById('people').value;
+            const message = document.getElementById('message').value;
+
+            const templateParams = {
+                name: name,
+                contact: contact,
+                tour: tour,
+                vehicle: vehicle,
+                date: date,
+                people: people,
+                message: message || "No additional info"
+            };
+
+            emailjs.send('service_n4nb5ob', 'template_vep6qxe', templateParams)
+                .then(function () {
+                    alert('Success! Your booking inquiry has been sent. We will contact you shortly.');
+                    document.getElementById('bookingForm').reset();
+                }, function (error) {
+                    alert('An error occurred. Please try again or contact us via Telegram.');
+                    console.log('EmailJS Error:', error);
+                })
+                .finally(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                });
+        });
+
+        // Smooth Scroll to Top
+        document.getElementById('scrollTopBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Show/Hide Scroll Button
+        window.onscroll = function () {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                document.getElementById('scrollTopBtn').style.opacity = '1';
+                document.getElementById('scrollTopBtn').style.visibility = 'visible';
+            } else {
+                document.getElementById('scrollTopBtn').style.opacity = '0';
+                document.getElementById('scrollTopBtn').style.visibility = 'hidden';
+            }
+        };
+        // Mobile Menu Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navOverlay = document.getElementById('navOverlay');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            navToggle.querySelector('i').classList.toggle('fa-bars-staggered');
+            navToggle.querySelector('i').classList.toggle('fa-xmark');
+        });
+
+        navOverlay.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            navOverlay.classList.remove('active');
+            navToggle.querySelector('i').classList.add('fa-bars-staggered');
+            navToggle.querySelector('i').classList.remove('fa-xmark');
+        });
+
+        // Nav Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.main-nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>
