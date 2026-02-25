@@ -1,7 +1,4 @@
-/* Language Switcher */
-.lang-switcher {
-    scroll-behavior: smooth;
-}
+/* Main Application Styles */
 
 :root {
     --primary-gold: #D4AF37;
@@ -12,6 +9,8 @@
     --text-muted: #94a3b8;
     --glass-border: rgba(255, 255, 255, 0.1);
     --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --premium-gold: #d4af37;
+    --dark-overlay: rgba(0, 0, 0, 0.7);
 }
 
 * {
@@ -76,9 +75,29 @@
 
 /* Specific adjustment for mobile to prevent it from being too big */
 @media (max-width: 768px) {
+    .nav-container {
+        justify-content: space-between !important;
+        padding: 0.5rem 1.5rem !important;
+        display: flex !important;
+    }
+
     .logo img {
-        height: 80px;
-        /* Increased mobile size */
+        height: 60px !important;
+        /* Slightly larger as requested */
+        width: auto !important;
+    }
+
+    .main-nav.scrolled .logo img {
+        height: 55px !important;
+    }
+
+    .nav-toggle {
+        display: block !important;
+        order: 2;
+    }
+
+    .logo {
+        order: 1;
     }
 }
 
@@ -256,8 +275,8 @@ body {
     background-image: url('khiva_tour_thumb.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
-    /* Parallax effect */
+    background-attachment: scroll;
+    /* Changed from fixed for better mobile compatibility */
     min-height: 80vh;
     display: flex;
     align-items: center;
@@ -303,8 +322,26 @@ h1 {
         padding: 0 1.25rem;
     }
 
-    header {
-        padding: 4rem 1.25rem 2rem;
+    .home-hero {
+        padding: 6rem 1.25rem 2rem;
+        min-height: 60vh;
+        /* Reduced height as requested */
+        background-attachment: scroll;
+        /* Fix for some mobile browsers */
+        background-position: 70% center;
+        /* Adjust image to show better part of Khiva */
+    }
+
+    .btn-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .btn-link,
+    .btn-secondary {
+        width: 100%;
+        justify-content: center;
     }
 }
 
@@ -501,7 +538,7 @@ h1 {
     }
 
     .image-box {
-        min-height: 250px;
+        min-height: 200px;
         flex: auto;
     }
 
@@ -1187,80 +1224,8 @@ h1 {
     }
 }
 
+/* CSS cleaned up: Removed duplicate .main-nav, .nav-container, and .logo rules that were conflicting with mobile styles */
 
-/* --- Navigation / Logo --- */
-.main-nav {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    padding: 0.8rem 0;
-    /* Reduced padding */
-    z-index: 1000;
-    /* Elevated z-index */
-    background-color: rgba(15, 23, 42, 0.9);
-    /* Slightly transparent */
-    backdrop-filter: blur(10px);
-    /* Glass effect */
-    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    transition: var(--transition);
-}
-
-.nav-container {
-    display: flex;
-    justify-content: center;
-    /* Centered for better balance when sticky */
-    align-items: center;
-    padding: 0.5rem 2rem;
-}
-
-/* Logo Clean Style (No Frame) */
-.logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-decoration: none;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    display: inline-block;
-
-    /* Deep Gold Gradient Text Only */
-    background-image: linear-gradient(to right,
-            #BF953F,
-            #FCF6BA,
-            #B38728,
-            #FBF5B7,
-            #AA771C);
-    background-size: 200% auto;
-    color: #fff;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    /* Animation */
-    animation: shine 4s linear infinite;
-}
-
-@media (max-width: 480px) {
-    .logo {
-        font-size: 1.2rem;
-        letter-spacing: 1px;
-    }
-
-    .nav-container {
-        padding: 0.5rem 1rem;
-    }
-}
-
-.logo:hover {
-    opacity: 0.9;
-}
-
-@keyframes shine {
-    to {
-        background-position: 200% center;
-    }
-}
 
 /* --- New Footer & Back to Top --- */
 footer {
@@ -1777,4 +1742,309 @@ select.form-control option {
 .e-card.selected h3,
 .e-card.selected .price-big {
     color: var(--primary-gold);
+}
+
+/* Language Switcher Component */
+.lang-switcher {
+    position: relative;
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.lang-switcher button#langBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.05rem;
+    color: var(--primary-gold);
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    font-family: inherit;
+    font-weight: 600;
+    transition: color 0.2s;
+    filter: drop-shadow(0 0 6px #fff7c1) drop-shadow(0 0 2px #d4af37);
+    text-shadow: 0 0 6px #fff7c1, 0 0 2px #d4af37;
+}
+
+.lang-switcher button#langBtn:hover {
+    color: var(--primary-gold-hover);
+}
+
+.lang-switcher #langLabel {
+    margin-left: 0.3em;
+    font-size: 1em;
+    color: var(--primary-gold);
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 0 6px #fff7c1, 0 0 2px #d4af37;
+}
+
+.lang-switcher #langDropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 2.2em;
+    background: #fff;
+    border: 1px solid var(--primary-gold);
+    border-radius: 6px;
+    min-width: 120px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 1000;
+    padding: 0.2em 0;
+}
+
+.lang-switcher .lang-option {
+    color: #222;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.2s, color 0.2s;
+}
+
+.lang-switcher .lang-option:hover {
+    background: var(--primary-gold);
+    color: #fff;
+}
+
+/* Gallery Specific Styles */
+.gallery-hero {
+    height: 60vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out, transform 2s ease-out;
+    transform: scale(1.05);
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.gallery-hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+    z-index: 0;
+}
+
+.gallery-container {
+    padding: 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-auto-rows: 250px;
+    gap: 20px;
+    grid-auto-flow: dense;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item.wide {
+    grid-column: span 2;
+}
+
+.gallery-item.tall {
+    grid-row: span 2;
+}
+
+.gallery-item.big {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .item-overlay {
+    opacity: 1;
+}
+
+.item-overlay i {
+    color: white;
+    font-size: 2rem;
+    transform: scale(0.5);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .item-overlay i {
+    transform: scale(1);
+}
+
+.gallery-section-header {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem 0 1rem;
+    margin-top: 2rem;
+}
+
+.gallery-section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--premium-gold);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.gallery-section-header p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    font-style: italic;
+}
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    flex-direction: column;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80vh;
+    position: relative;
+}
+
+.lightbox-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border: 3px solid var(--premium-gold);
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    transform: translateY(-50%);
+}
+
+.nav-btn {
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    background: rgba(212, 175, 55, 0.2);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background: var(--premium-gold);
+    color: black;
+}
+
+@media (max-width: 768px) {
+    .gallery-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 300px;
+    }
+
+    .gallery-item.wide,
+    .gallery-item.big {
+        grid-column: span 1;
+    }
+
+    .gallery-item.tall {
+        grid-row: span 1;
+    }
 }

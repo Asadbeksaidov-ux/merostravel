@@ -28,8 +28,8 @@
         content="Experience the legend of the Silk Road with Meros Travel. Exclusive tours to Khiva, Aral Sea, and beyond.">
     <meta property="twitter:image" content="https://merostravel.uz/khiva_tour_thumb.jpg">
 
-    <link rel="icon" type="image/png" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="icon" type="image/png" href="logo_final.png">
+    <link rel="apple-touch-icon" href="logo_final.png">
     <link rel="stylesheet" href="style.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -37,11 +37,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function () {
-            emailjs.init("VFOlcr26fn2MPqXYK");
-        })();
-    </script>
+    <script src="main.js" defer></script>
 </head>
 
 <body>
@@ -50,7 +46,7 @@
     <nav class="main-nav">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="logo.png" alt="Meros Travel">
+                <img src="logo_final.png" alt="Meros Travel">
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <i class="fa-solid fa-bars-staggered"></i>
@@ -81,7 +77,7 @@
         <!-- Section 1: Day Trips -->
         <section class="tour-section">
             <div class="image-box">
-                <img src="images/day_trips.png" alt="Ancient Fortress in Desert">
+                <img src="images/day_trips.jpg" alt="Ancient Fortress in Desert">
                 <div class="img-overlay"></div>
             </div>
             <div class="content-box">
@@ -104,7 +100,7 @@
         <!-- Section 2: Transfers (Reversed) -->
         <section class="tour-section reversed">
             <div class="image-box">
-                <img src="images/transfer.png" alt="Luxury Car Transfer">
+                <img src="images/transfer.jpg" alt="Luxury Car Transfer">
                 <div class="img-overlay"></div>
             </div>
             <div class="content-box">
@@ -127,7 +123,7 @@
         <!-- Section 3: Aral Sea Adventures -->
         <section class="tour-section">
             <div class="image-box">
-                <img src="images/aral_sea.png" alt="Aral Sea Coast">
+                <img src="images/aral_sea.jpg" alt="Aral Sea Coast">
                 <div class="img-overlay"></div>
             </div>
             <div class="content-box">
@@ -150,7 +146,7 @@
         <!-- Section 4: Khiva Walking Tour (Reversed) -->
         <section class="tour-section reversed">
             <div class="image-box">
-                <img src="images/walking_tour.png" alt="Khiva Minaret">
+                <img src="images/walking_tour.jpg" alt="Khiva Minaret">
                 <div class="img-overlay"></div>
             </div>
             <div class="content-box">
@@ -316,98 +312,7 @@
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
-    <!-- Flatpickr JS -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        // Initialize Flatpickr
-        flatpickr("#date", {
-            minDate: "today",
-            dateFormat: "Y-m-d",
-            animate: true,
-            disableMobile: true
-        });
-
-        // Form Submission Logic
-        document.getElementById('bookingForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const btn = e.target.querySelector('button');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-            btn.disabled = true;
-
-            const templateParams = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                contact: document.getElementById('contact').value,
-                tour: document.getElementById('tour').value,
-                date: document.getElementById('date').value,
-                people: document.getElementById('people').value,
-                message: document.getElementById('message').value || "No additional info"
-            };
-
-            emailjs.send('service_n4nb5ob', 'template_vep6qxe', templateParams)
-                .then(function () {
-                    alert('Success! Your booking inquiry has been sent. We will contact you shortly.');
-                    document.getElementById('bookingForm').reset();
-                }, function (error) {
-                    alert('An error occurred. Please try again or contact us via Telegram.');
-                    console.log('EmailJS Error:', error);
-                })
-                .finally(() => {
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                });
-        });
-
-        // Smooth Scroll to Top
-        document.getElementById('scrollTopBtn').addEventListener('click', function (e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Show/Hide Scroll Button
-        window.onscroll = function () {
-            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-                document.getElementById('scrollTopBtn').style.opacity = '1';
-                document.getElementById('scrollTopBtn').style.visibility = 'visible';
-            } else {
-                document.getElementById('scrollTopBtn').style.opacity = '0';
-                document.getElementById('scrollTopBtn').style.visibility = 'hidden';
-            }
-        };
-        // Mobile Menu Toggle
-        const navToggle = document.getElementById('navToggle');
-        const navMenu = document.getElementById('navMenu');
-        const navOverlay = document.getElementById('navOverlay');
-
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            navOverlay.classList.toggle('active');
-            navToggle.querySelector('i').classList.toggle('fa-bars-staggered');
-            navToggle.querySelector('i').classList.toggle('fa-xmark');
-        });
-
-        navOverlay.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            navOverlay.classList.remove('active');
-            navToggle.querySelector('i').classList.add('fa-bars-staggered');
-            navToggle.querySelector('i').classList.remove('fa-xmark');
-        });
-
-        // Nav Scroll Effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('.main-nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-    </script>
 </body>
 
 </html>

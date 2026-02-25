@@ -2,91 +2,18 @@
 <html lang="en">
 
 <head>
-
-    <style>
-        .lang-switcher {
-            position: relative;
-            display: inline-block;
-            margin-left: 1rem;
-        }
-
-        .lang-switcher button#langBtn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.05rem;
-            color: var(--primary-gold);
-            display: flex;
-            align-items: center;
-            gap: 0.3em;
-            font-family: inherit;
-            font-weight: 600;
-            transition: color 0.2s;
-            filter: drop-shadow(0 0 6px #fff7c1) drop-shadow(0 0 2px #d4af37);
-            text-shadow: 0 0 6px #fff7c1, 0 0 2px #d4af37;
-        }
-
-        .lang-switcher button#langBtn:hover {
-            color: var(--primary-gold-hover);
-        }
-
-        .lang-switcher #langLabel {
-            margin-left: 0.3em;
-            font-size: 1em;
-            color: var(--primary-gold);
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-shadow: 0 0 6px #fff7c1, 0 0 2px #d4af37;
-        }
-
-        .lang-switcher #langDropdown {
-            display: none;
-            position: absolute;
-            right: 0;
-            top: 2.2em;
-            background: #fff;
-            border: 1px solid var(--primary-gold);
-            border-radius: 6px;
-            min-width: 120px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            z-index: 1000;
-            padding: 0.2em 0;
-        }
-
-        .lang-switcher .lang-option {
-            color: #222;
-            padding: 0.5em 1em;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background 0.2s, color 0.2s;
-        }
-
-        .lang-switcher .lang-option:hover {
-            background: var(--primary-gold);
-            color: #fff;
-        }
-    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day Trips & Desert Fortresses - Meros Travel | Khorezm History</title>
-    <meta name="description"
-        content="Explore the ancient fortresses of Khorezm with Meros Travel. Guided day trips from Khiva to Kyzyl-Kala, Toprak-Kala, Ayaz-Kala and the Badai Tugai forest.">
-    <meta name="keywords"
-        content="Khiva day trips, Khorezm fortresses tour, Ayaz-Kala, Toprak-Kala, Kyzyl-Kala, ancient Silk Road ruins, Badai Tugai nature reserve tours">
-
-    <link rel="icon" type="image/png" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png">
+    <title>Day Trips & Fortresses - Meros Travel</title>
+    <link rel="icon" type="image/png" href="logo_final.png">
+    <link rel="apple-touch-icon" href="logo_final.png">
     <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Flatpickr -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function () {
-            emailjs.init("VFOlcr26fn2MPqXYK");
-        })();
-    </script>
 </head>
 
 <body>
@@ -95,7 +22,7 @@
     <nav class="main-nav">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="logo.png" alt="Meros Travel">
+                <img src="logo_final.png" alt="Meros Travel">
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <i class="fa-solid fa-bars-staggered"></i>
@@ -115,7 +42,7 @@
     <div class="nav-overlay" id="navOverlay"></div>
 
     <!-- Hero Section -->
-    <header class="page-hero" style="background-image: url('images/day_trips.png');">
+    <header class="page-hero" style="background-image: url('images/day_trips.jpg');">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
             <h1>Desert & Fortress Chronicles</h1>
@@ -756,205 +683,8 @@
         <i class="fa-solid fa-arrow-up"></i>
     </a>
 
-    <script>
-        // Tab Functionality
-        const tabs = document.querySelectorAll('.tab-btn');
-        const contents = document.querySelectorAll('.tour-category');
-
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                contents.forEach(c => c.classList.remove('active'));
-
-                tab.classList.add('active');
-                document.getElementById(tab.dataset.target).classList.add('active');
-            });
-        });
-
-        // Expand & Select Functionality
-        const cards = document.querySelectorAll('.trip-card');
-        const vCards = document.querySelectorAll('.v-card');
-
-        cards.forEach(card => {
-            card.addEventListener('click', (e) => {
-                // If clicking a v-card, let the other listener handle it
-                if (e.target.closest('.v-card')) return;
-                card.classList.toggle('expanded');
-            });
-        });
-
-        vCards.forEach(vCard => {
-            vCard.addEventListener('click', (e) => {
-                e.stopPropagation(); // Don't toggle expansion when selecting vehicle
-                const tourCard = vCard.closest('.trip-card');
-                const tourValue = tourCard.dataset.tourValue;
-                const vehicleType = vCard.dataset.vehicle;
-
-                // Remove previous selections
-                document.querySelectorAll('.trip-card').forEach(card => card.classList.remove('selected'));
-                document.querySelectorAll('.v-card').forEach(card => card.classList.remove('selected'));
-
-                // Highlight selected cards
-                tourCard.classList.add('selected');
-                vCard.classList.add('selected');
-
-                // Select Tour
-                const tourSelect = document.getElementById('tour');
-                if (tourValue) {
-                    tourSelect.value = tourValue;
-                }
-
-                // Select Vehicle
-                const vehicleSelect = document.getElementById('vehicle');
-                if (vehicleType) {
-                    vehicleSelect.value = vehicleType;
-                }
-
-                // Show toast notification
-                showToast(tourValue, vehicleType);
-
-                // Scroll to booking after a short delay
-                setTimeout(() => {
-                    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
-                }, 800);
-            });
-        });
-
-        // Toast notification function
-        function showToast(tour, vehicle) {
-            // Remove existing toast if any
-            const existingToast = document.querySelector('.toast-notification');
-            if (existingToast) {
-                existingToast.remove();
-            }
-
-            // Create toast element
-            const toast = document.createElement('div');
-            toast.className = 'toast-notification';
-            toast.innerHTML = `
-                <i class="fa-solid fa-circle-check"></i>
-                <div class="toast-content">
-                    <div class="toast-title">Selected!</div>
-                    <div class="toast-message">${tour} - ${vehicle}</div>
-                </div>
-            `;
-
-            document.body.appendChild(toast);
-
-            // Show toast with animation
-            setTimeout(() => {
-                toast.classList.add('show');
-            }, 100);
-
-            // Hide toast after 3 seconds
-            setTimeout(() => {
-                toast.classList.remove('show');
-                setTimeout(() => {
-                    toast.remove();
-                }, 500);
-            }, 3000);
-        }
-    </script>
-
     <!-- Flatpickr JS -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        // Initialize Flatpickr
-        flatpickr("#date", {
-            minDate: "today",
-            dateFormat: "Y-m-d",
-            animate: true,
-            disableMobile: true
-        });
-
-        // Form Submission Logic
-        document.getElementById('bookingForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const btn = e.target.querySelector('button');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-            btn.disabled = true;
-
-            const name = document.getElementById('name').value;
-            const contact = document.getElementById('contact').value;
-            const tour = document.getElementById('tour').value;
-            const date = document.getElementById('date').value;
-            const vehicle = document.getElementById('vehicle').value;
-            const people = document.getElementById('people').value;
-            const message = document.getElementById('message').value;
-
-            const templateParams = {
-                name: name,
-                contact: contact,
-                tour: tour,
-                date: date,
-                vehicle: vehicle,
-                people: people,
-                message: message || "No additional info"
-            };
-
-            emailjs.send('service_n4nb5ob', 'template_vep6qxe', templateParams)
-                .then(function () {
-                    alert('Success! Your booking inquiry has been sent. We will contact you shortly.');
-                    document.getElementById('bookingForm').reset();
-                }, function (error) {
-                    alert('An error occurred. Please try again or contact us via Telegram.');
-                    console.log('EmailJS Error:', error);
-                })
-                .finally(() => {
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                });
-        });
-
-        // Smooth Scroll to Top
-        document.getElementById('scrollTopBtn').addEventListener('click', function (e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Show/Hide Scroll Button
-        window.onscroll = function () {
-            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-                document.getElementById('scrollTopBtn').style.opacity = '1';
-                document.getElementById('scrollTopBtn').style.visibility = 'visible';
-            } else {
-                document.getElementById('scrollTopBtn').style.opacity = '0';
-                document.getElementById('scrollTopBtn').style.visibility = 'hidden';
-            }
-        };
-        // Mobile Menu Toggle
-        const navToggle = document.getElementById('navToggle');
-        const navMenu = document.getElementById('navMenu');
-        const navOverlay = document.getElementById('navOverlay');
-
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            navOverlay.classList.toggle('active');
-            navToggle.querySelector('i').classList.toggle('fa-bars-staggered');
-            navToggle.querySelector('i').classList.toggle('fa-xmark');
-        });
-
-        navOverlay.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            navOverlay.classList.remove('active');
-            navToggle.querySelector('i').classList.add('fa-bars-staggered');
-            navToggle.querySelector('i').classList.remove('fa-xmark');
-        });
-
-        // Nav Scroll Effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('.main-nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-    </script>
 </body>
 
 </html>

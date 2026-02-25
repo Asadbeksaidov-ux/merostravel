@@ -2,81 +2,13 @@
 <html lang="en">
 
 <head>
-
-    <style>
-        .lang-switcher {
-            position: relative;
-            display: inline-block;
-            margin-left: 1rem;
-        }
-
-        .lang-switcher button#langBtn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.05rem;
-            color: var(--primary-gold);
-            display: flex;
-            align-items: center;
-            gap: 0.3em;
-            font-family: inherit;
-            font-weight: 600;
-            transition: color 0.2s;
-            filter: drop-shadow(0 0 6px #fff7c1) drop-shadow(0 0 2px #d4af37);
-            text-shadow: 0 0 6px #fff7c1, 0 0 2px #d4af37;
-        }
-
-        .lang-switcher button#langBtn:hover {
-            color: var(--primary-gold-hover);
-        }
-
-        .lang-switcher #langLabel {
-            margin-left: 0.3em;
-            font-size: 1em;
-            color: var(--primary-gold);
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-shadow: 0 0 6px #fff7c1, 0 0 2px #d4af37;
-        }
-
-        .lang-switcher #langDropdown {
-            display: none;
-            position: absolute;
-            right: 0;
-            top: 2.2em;
-            background: #fff;
-            border: 1px solid var(--primary-gold);
-            border-radius: 6px;
-            min-width: 120px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            z-index: 1000;
-            padding: 0.2em 0;
-        }
-
-        .lang-switcher .lang-option {
-            color: #222;
-            padding: 0.5em 1em;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background 0.2s, color 0.2s;
-        }
-
-        .lang-switcher .lang-option:hover {
-            background: var(--primary-gold);
-            color: #fff;
-        }
-    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photo Gallery - Meros Travel | Uzbekistan's Ancient Beauty</title>
-    <meta name="description"
-        content="Browse through the stunning photos of ancient Khiva, the Aral Sea, and the historical Silk Road sights of Uzbekistan captured by Meros Travel.">
-    <meta name="keywords"
-        content="Uzbekistan photography, Khiva photos, Aral Sea pictures, Silk Road gallery, ancient architecture Uzbekistan, Central Asia travel photos">
-
-    <link rel="icon" type="image/png" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png">
+    <title>Gallery - Meros Travel</title>
+    <link rel="icon" type="image/png" href="logo_final.png">
+    <link rel="apple-touch-icon" href="logo_final.png">
     <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -265,14 +197,16 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             background: rgba(0, 0, 0, 0.95);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 9999;
             flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .lightbox.active {
@@ -280,16 +214,24 @@
         }
 
         .lightbox-content {
-            max-width: 90%;
+            width: 100%;
+            height: 100%;
+            max-width: 1200px;
             max-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: relative;
         }
 
         .lightbox-content img {
-            width: 100%;
-            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
             object-fit: contain;
             border: 3px solid var(--premium-gold);
+            box-sizing: border-box;
         }
 
         .close-lightbox {
@@ -308,8 +250,11 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
-            padding: 0 40px;
+            padding: 0 20px;
             transform: translateY(-50%);
+            box-sizing: border-box;
+            left: 0;
+            z-index: 10000;
         }
 
         .nav-btn {
@@ -317,8 +262,8 @@
             font-size: 2rem;
             cursor: pointer;
             background: rgba(212, 175, 55, 0.2);
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -333,21 +278,36 @@
 
         @media (max-width: 768px) {
             .gallery-hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
 
             .gallery-grid {
                 grid-template-columns: 1fr;
-                grid-auto-rows: 300px;
+                grid-auto-rows: 250px;
+                /* Uniform height for all images on mobile */
             }
 
             .gallery-item.wide,
+            .gallery-item.tall,
             .gallery-item.big {
-                grid-column: span 1;
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
             }
 
-            .gallery-item.tall {
-                grid-row: span 1;
+            .lightbox-nav {
+                padding: 0 5px;
+            }
+
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+
+            .close-lightbox {
+                top: 15px;
+                right: 15px;
+                font-size: 2rem;
             }
         }
     </style>
@@ -358,7 +318,7 @@
     <nav class="main-nav">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="logo.png" alt="Meros Travel">
+                <img src="logo_final.png" alt="Meros Travel">
             </a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <i class="fa-solid fa-bars-staggered"></i>
@@ -521,106 +481,6 @@
         <p class="copyright">&copy; 2026 Meros Travel. All Rights Reserved.</p>
     </footer>
 
-    <script>
-        // Hero Slider
-        const slides = document.querySelectorAll('.slide');
-        let currentSlide = 0;
-
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-
-        setInterval(nextSlide, 3000);
-
-        // Lightbox Logic
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const closeLightbox = document.getElementById('closeLightbox');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        let currentIndex = 0;
-        const images = Array.from(galleryItems).map(item => item.querySelector('img').src);
-
-        galleryItems.forEach((item, index) => {
-            item.addEventListener('click', () => {
-                currentIndex = index;
-                showImage(currentIndex);
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        function showImage(index) {
-            lightboxImg.src = images[index];
-        }
-
-        closeLightbox.addEventListener('click', () => {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        prevBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            showImage(currentIndex);
-        });
-
-        nextBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            currentIndex = (currentIndex + 1) % images.length;
-            showImage(currentIndex);
-        });
-
-        lightbox.addEventListener('click', () => {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        lightboxImg.addEventListener('click', (e) => {
-            e.stopPropagation();
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (!lightbox.classList.contains('active')) return;
-            if (e.key === 'Escape') closeLightbox.click();
-            if (e.key === 'ArrowLeft') prevBtn.click();
-            if (e.key === 'ArrowRight') nextBtn.click();
-        });
-
-        // Mobile Menu Toggle
-        const navToggle = document.getElementById('navToggle');
-        const navMenu = document.getElementById('navMenu');
-        const navOverlay = document.getElementById('navOverlay');
-
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            navOverlay.classList.toggle('active');
-            navToggle.querySelector('i').classList.toggle('fa-bars-staggered');
-            navToggle.querySelector('i').classList.toggle('fa-xmark');
-        });
-
-        navOverlay.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            navOverlay.classList.remove('active');
-            navToggle.querySelector('i').classList.add('fa-bars-staggered');
-            navToggle.querySelector('i').classList.remove('fa-xmark');
-        });
-
-        // Nav Scroll Effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('.main-nav');
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-    </script>
 </body>
 
 </html>
