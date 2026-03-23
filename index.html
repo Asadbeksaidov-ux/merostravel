@@ -77,8 +77,8 @@
         <div class="container header-content">
             <h1>Experience the Legend</h1>
             <p class="subtitle">Discover the ancient beauty of Khiva and beyond with our exclusive premium services.</p>
-            <a href="#booking" class="btn-link" style="margin-top: 2rem;">Book Your Tour <i
-                    class="fa-solid fa-arrow-down"></i></a>
+            <a href="day_trips.html" class="btn-link" style="margin-top: 2rem;">Explore Tours <i
+                    class="fa-solid fa-arrow-right"></i></a>
         </div>
     </header>
 
@@ -100,7 +100,7 @@
                     <div class="btn-group">
                         <a href="day_trips.html" class="btn-link">Explore Itineraries <i
                                 class="fa-solid fa-arrow-right"></i></a>
-                        <a href="#booking" class="btn-secondary">Book Now</a>
+                        <a href="day_trips.html#booking" class="btn-secondary">Book Now</a>
                     </div>
                 </div>
             </div>
@@ -123,7 +123,7 @@
                     <div class="btn-group">
                         <a href="transfers.html" class="btn-link">Book Transfer <i
                                 class="fa-solid fa-arrow-right"></i></a>
-                        <a href="#booking" class="btn-secondary">Book Now</a>
+                        <a href="transfers.html#booking" class="btn-secondary">Book Now</a>
                     </div>
                 </div>
             </div>
@@ -146,7 +146,7 @@
                     <div class="btn-group">
                         <a href="aral_sea.html" class="btn-link">View Adventure <i
                                 class="fa-solid fa-arrow-right"></i></a>
-                        <a href="#booking" class="btn-secondary">Book Now</a>
+                        <a href="aral_sea.html#booking" class="btn-secondary">Book Now</a>
                     </div>
                 </div>
             </div>
@@ -169,123 +169,14 @@
                     <div class="btn-group">
                         <a href="walking_tour.html" class="btn-link">Start Walking <i
                                 class="fa-solid fa-arrow-right"></i></a>
-                        <a href="#booking" class="btn-secondary">Book Now</a>
+                        <a href="walking_tour.html#booking" class="btn-secondary">Book Now</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Booking Section -->
-    <section class="booking-section" id="booking">
-        <div class="booking-container">
-            <h2>Book Your Journey</h2>
-            <p class="subtitle">Ready to explore? Fill out the form below and we will contact you shortly.</p>
-
-            <form class="booking-form" id="bookingForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Your Name</label>
-                        <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="example@gmail.com"
-                            required>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Contact (WhatsApp/Telegram)</label>
-                        <input type="text" id="contact" name="contact" class="form-control" placeholder="94-315-37-00"
-                            required oninput="this.value = this.value.replace(/[^0-9+\-]/g, '')">
-                    </div>
-                    <div class="form-group">
-                        <label>Date</label>
-                        <input type="text" id="date" name="date" class="form-control" placeholder="Select Date"
-                            required>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Select Tour</label>
-                        <select id="tour" name="tour" class="form-control" required>
-                            <option value="" disabled selected>Select Your Journey</option>
-                            <optgroup label="Walking Tours">
-                                <option value="Khiva City Walking Tour">Khiva City Walking Tour (Ichan Kala)</option>
-                            </optgroup>
-                            <optgroup label="Day Trips (Return to Khiva)">
-                                <option value="Three Fortresses Tour">Three Fortresses Tour (Kyzyl, Toprak, Ayaz Kala)
-                                </option>
-                                <option value="Five Fortresses Tour">Five Fortresses Tour (includes Guldursun, Qoy
-                                    Qirilgan)</option>
-                                <option value="Seven Fortresses Tour">Seven Fortresses Tour (includes Janbas Kala)
-                                </option>
-                                <option value="Nine Fortresses Tour">Nine Fortresses Tour (includes Kurgashin Kala)
-                                </option>
-                                <option value="Badai Tugai + Fortresses">Badai Tugai Nature Reserve + Three Fortresses
-                                </option>
-                                <option value="Nukus Museum Tour">Nukus Museum & Chilpik Kala Tour</option>
-                                <option value="Nukus Museum + Mizdakhan">Nukus Museum & Mizdakhan Necropolis Tour
-                                </option>
-                                <option value="Muynak Ship Cemetery Day Tour">Muynak Ship Cemetery & Aral Sea Museum (1
-                                    Day)</option>
-                                <option value="Nukus Museum via Fortresses">Nukus Museum via Ancient Fortresses</option>
-                            </optgroup>
-                            <optgroup label="Connecting Sightseeing Tours">
-                                <option value="Khiva to Nukus via Chilpik">Khiva to Nukus (Direct with Chilpik Kala)
-                                </option>
-                                <option value="Khiva to Nukus via 3 Fortresses">Khiva to Nukus via Three Fortresses
-                                </option>
-                                <option value="Khiva to Nukus via 4 Fortresses">Khiva to Nukus via Four Fortresses
-                                </option>
-                                <option value="Khiva to Nukus via Badai Tugai">Khiva to Nukus via Badai Tugai Reserve
-                                </option>
-                                <option value="Khiva to Nukus via Jampik">Khiva to Nukus via Jampik & Badai Tugai
-                                </option>
-                                <option value="Khiva to Bukhara via 3 Fortresses">Khiva to Bukhara via Three Fortresses
-                                </option>
-                                <option value="Khiva to Bukhara via 4 Fortresses">Khiva to Bukhara via Four Fortresses
-                                </option>
-                            </optgroup>
-                            <optgroup label="Aral Sea Expeditions (2 Days)">
-                                <option value="Aral Sea Classic">Aral Sea Adventure: Classic Route</option>
-                                <option value="Aral Sea Extended">Aral Sea Adventure: Extended (Sudochie Lake)</option>
-                                <option value="Aral Sea via Kungrad">Aral Sea Adventure: via Kungrad (Adyr)</option>
-                                <option value="Aral Sea from Nukus">Aral Sea Adventure: Starting from Nukus</option>
-                            </optgroup>
-                            <optgroup label="Premium Transfers">
-                                <option value="Transfer: Urgench Airport to Khiva">Transfer: Urgench Airport to Khiva
-                                </option>
-                                <option value="Transfer: Urgench Station to Khiva">Transfer: Urgench Train Station to
-                                    Khiva</option>
-                                <option value="Transfer: Khiva Station Local">Transfer: Khiva Train Station Local
-                                </option>
-                                <option value="Transfer: Khiva to Bukhara">Transfer: Khiva to Bukhara</option>
-                                <option value="Transfer: Khiva to Nukus">Transfer: Khiva to Nukus</option>
-                                <option value="Custom Route Inquiry">Other / Custom Bespoke Route</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Number of People</label>
-                        <input type="number" id="people" name="people" class="form-control" min="1" placeholder="2"
-                            required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Additional Requests</label>
-                    <textarea id="message" name="message" class="form-control" rows="3"
-                        placeholder="Any special requirements?"></textarea>
-                </div>
-
-                <button type="submit" class="btn-submit">Send Inquiry</button>
-            </form>
-        </div>
-    </section>
+    </main>
 
     <!-- Footer -->
     <footer>

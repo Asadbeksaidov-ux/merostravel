@@ -6,14 +6,16 @@
 })();
 
 // Utility: Toast Notification
-function showToast(title, message) {
+function showToast(title, message, type = 'success') {
     const existingToast = document.querySelector('.toast-notification');
     if (existingToast) existingToast.remove();
 
     const toast = document.createElement('div');
-    toast.className = 'toast-notification';
+    toast.className = `toast-notification ${type}`;
+    const icon = type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation';
+
     toast.innerHTML = `
-        <i class="fa-solid fa-circle-check"></i>
+        <i class="fa-solid ${icon}"></i>
         <div class="toast-content">
             <div class="toast-title">${title}</div>
             <div class="toast-message">${message}</div>
@@ -25,7 +27,7 @@ function showToast(title, message) {
     setTimeout(() => {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 500);
-    }, 3000);
+    }, 4000);
 }
 
 // Initialize Flatpickr if element exists
@@ -42,8 +44,55 @@ if (dateInput) {
 // Form Submission Logic
 const bookingForm = document.getElementById('bookingForm');
 if (bookingForm) {
+    const inputs = bookingForm.querySelectorAll('.form-control');
+
+    // Real-time validation: remove error highights when user types
+    inputs.forEach(input => {
+        const removeError = () => {
+            input.classList.remove('error');
+            const hint = input.parentElement.querySelector('.error-hint');
+            if (hint) hint.remove();
+        };
+
+        input.addEventListener('input', removeError);
+        input.addEventListener('change', removeError);
+    });
+
     bookingForm.addEventListener('submit', function (e) {
         e.preventDefault();
+
+        let hasError = false;
+        let firstErrorField = null;
+
+        // Manual validation check (excluding 'message')
+        inputs.forEach(input => {
+            // Remove existing hints before re-check
+            const existingHint = input.parentElement.querySelector('.error-hint');
+            if (existingHint) existingHint.remove();
+
+            if (input.id !== 'message' && !input.value.trim()) {
+                input.classList.add('error');
+                hasError = true;
+                if (!firstErrorField) firstErrorField = input;
+
+                // Add error hint
+                const hint = document.createElement('span');
+                hint.className = 'error-hint';
+                hint.innerText = "Please fill in this field";
+                input.parentElement.appendChild(hint);
+            } else {
+                input.classList.remove('error');
+            }
+        });
+
+        if (hasError) {
+            showToast("Required Fields", "Please fill in all mandatory fields to proceed.", "error");
+            if (firstErrorField) {
+                firstErrorField.focus();
+                firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            return;
+        }
 
         const btn = e.target.querySelector('button');
         const originalText = btn.innerHTML;
@@ -60,15 +109,15 @@ if (bookingForm) {
             date: getVal('date'),
             people: getVal('people'),
             vehicle: getVal('vehicle'),
-            message: getVal('message') || "No additional info"
+            message: getVal('message')
         };
 
         emailjs.send('service_n4nb5ob', 'template_vep6qxe', templateParams)
             .then(function () {
-                alert('Success! Your booking inquiry has been sent. We will contact you shortly.');
+                showToast('Success!', 'Your booking inquiry has been sent. We will contact you shortly.');
                 bookingForm.reset();
             }, function (error) {
-                alert('An error occurred. Please try again or contact us via Telegram.');
+                showToast('Error', 'An error occurred. Please try again or contact us via Telegram.', 'error');
                 console.log('EmailJS Error:', error);
             })
             .finally(() => {
