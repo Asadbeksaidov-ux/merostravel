@@ -760,8 +760,8 @@ h1 {
 }
 
 .trip-card.expanded .trip-details {
-    max-height: 500px;
-    /* Arbitrary large height */
+    max-height: 1500px;
+    /* High enough to show all items when wrapped on mobile */
     padding: 2rem;
 }
 
@@ -1425,10 +1425,20 @@ select.form-control {
     background-size: 1em;
 }
 
-/* Fix for select options being visible */
+/* Fix for select options and optgroups */
+select.form-control optgroup {
+    background-color: #0f172a;
+    color: var(--primary-gold);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 8px;
+}
+
 select.form-control option {
-    background-color: var(--dark-bg);
+    background-color: #1e293b;
     color: var(--text-light);
+    font-size: 0.95rem;
+    padding: 8px 15px;
 }
 
 .form-control::placeholder {
